@@ -1,9 +1,30 @@
-[root@cent mysql8]# yum install --downloadonly --downloaddir=/home/yusuke/work/kaltura/ kaltura-server
+[yusuke@server kaltura]$ sudo yum install --downloadonly --downloaddir=/home/yusuke/kaltura/ kaltura-server
 読み込んだプラグイン:fastestmirror
 Loading mirror speeds from cached hostfile
- * base: ty1.mirror.newmediaexpress.com
- * extras: ty1.mirror.newmediaexpress.com
- * updates: ty1.mirror.newmediaexpress.com
+epel/x86_64/metalink                                     | 7.6 kB     00:00     
+ * base: ftp.riken.jp
+ * epel: nrt.edge.kernel.org
+ * extras: ftp.riken.jp
+ * updates: ftp.riken.jp
+Kaltura                                                  | 2.9 kB     00:00     
+Kaltura-noarch                                           | 2.9 kB     00:00     
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 5.3 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+epel/x86_64/primary_db         FAILED                                          
+http://mirror01.idc.hinet.net/EPEL/7/x86_64/repodata/75f5ecb6acadcddd0d737e6175bcf3ee32145403ea23df0fd037e4e8253fd975-primary.sqlite.bz2: [Errno 14] HTTP Error 404 - Not Found
+他のミラーを試します。
+To address this issue please refer to the below wiki article 
+
+https://wiki.centos.org/yum-errors
+
+If above article doesn't help to resolve this issue please use https://bugs.centos.org/.
+
+(1/4): Kaltura-noarch/7/primary_db                         | 101 kB   00:01     
+(2/4): Kaltura/7/x86_64/primary_db                         | 138 kB   00:02     
+(3/4): epel/x86_64/primary_db                              | 6.9 MB   00:02     
+(4/4): epel/x86_64/updateinfo                              | 1.0 MB   00:04     
 依存性の解決をしています
 --> トランザクションの確認を実行しています。
 ---> パッケージ kaltura-server.noarch 0:15.8.0-1 を インストール
@@ -36,6 +57,7 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ kaltura-dwh.noarch 0:12.14.0-1 を インストール
 --> 依存性の処理をしています: kaltura-postinst のパッケージ: kaltura-dwh-12.14.0-1.noarch
 --> 依存性の処理をしています: kaltura-pentaho のパッケージ: kaltura-dwh-12.14.0-1.noarch
+--> 依存性の処理をしています: jre のパッケージ: kaltura-dwh-12.14.0-1.noarch
 ---> パッケージ kaltura-elasticsearch.noarch 0:1.0.0-7 を インストール
 --> 依存性の処理をしています: java-1.8.0-openjdk-headless のパッケージ: kaltura-elasticsearch-1.0.0-7.noarch
 ---> パッケージ kaltura-front.noarch 0:15.8.0-1 を インストール
@@ -95,6 +117,16 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ httpd.x86_64 0:2.4.6-90.el7.centos を インストール
 --> 依存性の処理をしています: httpd-tools = 2.4.6-90.el7.centos のパッケージ: httpd-2.4.6-90.el7.centos.x86_64
 --> 依存性の処理をしています: /etc/mime.types のパッケージ: httpd-2.4.6-90.el7.centos.x86_64
+--> 依存性の処理をしています: libaprutil-1.so.0()(64bit) のパッケージ: httpd-2.4.6-90.el7.centos.x86_64
+--> 依存性の処理をしています: libapr-1.so.0()(64bit) のパッケージ: httpd-2.4.6-90.el7.centos.x86_64
+---> パッケージ java-1.8.0-openjdk.x86_64 1:1.8.0.222.b10-1.el7_7 を インストール
+--> 依存性の処理をしています: xorg-x11-fonts-Type1 のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: libXcomposite(x86-64) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: gtk2(x86-64) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: libgif.so.4()(64bit) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: libXtst.so.6()(64bit) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: libXrender.so.1()(64bit) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
+--> 依存性の処理をしています: libXi.so.6()(64bit) のパッケージ: 1:java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64
 ---> パッケージ java-1.8.0-openjdk-headless.x86_64 1:1.8.0.222.b10-1.el7_7 を インストール
 --> 依存性の処理をしています: tzdata-java >= 2015d のパッケージ: 1:java-1.8.0-openjdk-headless-1.8.0.222.b10-1.el7_7.x86_64
 --> 依存性の処理をしています: copy-jdk-configs >= 3.3 のパッケージ: 1:java-1.8.0-openjdk-headless-1.8.0.222.b10-1.el7_7.x86_64
@@ -176,6 +208,7 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ kaltura-playkit-bundler.noarch 0:1.1.1-11 を インストール
 --> 依存性の処理をしています: nodejs >= 10.0.0 のパッケージ: kaltura-playkit-bundler-1.1.1-11.noarch
 ---> パッケージ kaltura-postinst.noarch 0:1.0.33-80 を インストール
+--> 依存性の処理をしています: wget のパッケージ: kaltura-postinst-1.0.33-80.noarch
 --> 依存性の処理をしています: unzip のパッケージ: kaltura-postinst-1.0.33-80.noarch
 --> 依存性の処理をしています: redhat-lsb-core のパッケージ: kaltura-postinst-1.0.33-80.noarch
 --> 依存性の処理をしています: bc のパッケージ: kaltura-postinst-1.0.33-80.noarch
@@ -184,7 +217,7 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: librtmp.so.1()(64bit) のパッケージ: kaltura-segmenter-1.0-3.x86_64
 --> 依存性の処理をしています: libfaac.so.0()(64bit) のパッケージ: kaltura-segmenter-1.0-3.x86_64
 ---> パッケージ kaltura-sshpass.x86_64 0:1.05-1 を インストール
----> パッケージ librdkafka.x86_64 0:0.11.4-1.el7 を インストール
+---> パッケージ librdkafka.x86_64 0:0.11.5-1.el7 を インストール
 ---> パッケージ memcached.x86_64 0:1.4.15-10.el7_3.1 を インストール
 --> 依存性の処理をしています: perl(strict) のパッケージ: memcached-1.4.15-10.el7_3.1.x86_64
 --> 依存性の処理をしています: perl(IO::Socket::INET) のパッケージ: memcached-1.4.15-10.el7_3.1.x86_64
@@ -197,11 +230,11 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: libmcrypt.so.4()(64bit) のパッケージ: php-mcrypt-5.4.35-1.x86_64
 ---> パッケージ php-mysql.x86_64 0:5.4.16-46.el7 を インストール
 --> 依存性の処理をしています: php-pdo(x86-64) = 5.4.16-46.el7 のパッケージ: php-mysql-5.4.16-46.el7.x86_64
----> パッケージ php-pecl-apc.x86_64 0:3.1.13-1 を インストール
---> 依存性の処理をしています: /usr/bin/pecl のパッケージ: php-pecl-apc-3.1.13-1.x86_64
---> 依存性の処理をしています: /usr/bin/pecl のパッケージ: php-pecl-apc-3.1.13-1.x86_64
+---> パッケージ php-pecl-apcu.x86_64 0:4.0.11-1.el7 を インストール
+--> 依存性の処理をしています: /usr/bin/pecl のパッケージ: php-pecl-apcu-4.0.11-1.el7.x86_64
+--> 依存性の処理をしています: /usr/bin/pecl のパッケージ: php-pecl-apcu-4.0.11-1.el7.x86_64
 ---> パッケージ php-pecl-memcache.x86_64 0:3.0.8-4.el7 を インストール
----> パッケージ php-pecl-ssh2.x86_64 0:0.12-1 を インストール
+---> パッケージ php-pecl-ssh2.x86_64 0:0.12-1.el7 を インストール
 ---> パッケージ sox.x86_64 0:14.4.1-7.el7 を インストール
 --> 依存性の処理をしています: libsndfile.so.1(libsndfile.so.1.0)(64bit) のパッケージ: sox-14.4.1-7.el7.x86_64
 --> 依存性の処理をしています: libpulse.so.0(PULSE_0)(64bit) のパッケージ: sox-14.4.1-7.el7.x86_64
@@ -217,13 +250,14 @@ Loading mirror speeds from cached hostfile
 --> トランザクションの確認を実行しています。
 ---> パッケージ OpenEXR-libs.x86_64 0:1.7.1-7.el7 を インストール
 ---> パッケージ SDL.x86_64 0:1.2.15-14.el7 を インストール
+---> パッケージ apr.x86_64 0:1.4.8-5.el7 を インストール
+---> パッケージ apr-util.x86_64 0:1.5.2-6.el7 を インストール
 ---> パッケージ bc.x86_64 0:1.06.95-13.el7 を インストール
 ---> パッケージ cairo.x86_64 0:1.15.12-4.el7 を インストール
 --> 依存性の処理をしています: libxcb.so.1()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 --> 依存性の処理をしています: libxcb-shm.so.0()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 --> 依存性の処理をしています: libxcb-render.so.0()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 --> 依存性の処理をしています: libpixman-1.so.0()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
---> 依存性の処理をしています: libXrender.so.1()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 --> 依存性の処理をしています: libGL.so.1()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 --> 依存性の処理をしています: libEGL.so.1()(64bit) のパッケージ: cairo-1.15.12-4.el7.x86_64
 ---> パッケージ copy-jdk-configs.noarch 0:3.3-10.el7_5 を インストール
@@ -235,11 +269,23 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: fontpackages-filesystem のパッケージ: fontconfig-2.13.0-4.3.el7.x86_64
 --> 依存性の処理をしています: dejavu-sans-fonts のパッケージ: fontconfig-2.13.0-4.3.el7.x86_64
 ---> パッケージ gdk-pixbuf2.x86_64 0:2.36.12-3.el7 を インストール
+---> パッケージ giflib.x86_64 0:4.1.6-9.el7 を インストール
 ---> パッケージ gnutls.x86_64 0:3.3.29-9.el7_6 を インストール
 --> 依存性の処理をしています: trousers >= 0.3.11.2 のパッケージ: gnutls-3.3.29-9.el7_6.x86_64
 --> 依存性の処理をしています: libnettle.so.4()(64bit) のパッケージ: gnutls-3.3.29-9.el7_6.x86_64
 --> 依存性の処理をしています: libhogweed.so.2()(64bit) のパッケージ: gnutls-3.3.29-9.el7_6.x86_64
 ---> パッケージ gsm.x86_64 0:1.0.13-11.el7 を インストール
+---> パッケージ gtk2.x86_64 0:2.24.31-1.el7 を インストール
+--> 依存性の処理をしています: libXrandr >= 1.2.99.4-2 のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: atk >= 1.29.4-2 のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: hicolor-icon-theme のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: gtk-update-icon-cache のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libatk-1.0.so.0()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libXrandr.so.2()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libXinerama.so.1()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libXfixes.so.3()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libXdamage.so.1()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
+--> 依存性の処理をしています: libXcursor.so.1()(64bit) のパッケージ: gtk2-2.24.31-1.el7.x86_64
 ---> パッケージ httpd-tools.x86_64 0:2.4.6-90.el7.centos を インストール
 ---> パッケージ ilmbase.x86_64 0:1.0.3-7.el7 を インストール
 ---> パッケージ jasper-libs.x86_64 0:1.900.1-33.el7 を インストール
@@ -249,7 +295,6 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ kaltura-a52dec.x86_64 0:0.7.4-11 を インストール
 ---> パッケージ kaltura-lame.x86_64 0:3.99.5-3 を インストール
 ---> パッケージ kaltura-libfaac.x86_64 0:1.28-1 を インストール
----> パッケージ kaltura-libmcrypt.x86_64 0:2.5.8-2 を インストール
 ---> パッケージ kaltura-libmediainfo.x86_64 0:0.7.61-8 を インストール
 ---> パッケージ kaltura-libopencore-amr.x86_64 0:0.1.3-1 を インストール
 ---> パッケージ kaltura-libvpx.x86_64 0:1.7.0-1 を インストール
@@ -261,13 +306,16 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ libSM.x86_64 0:1.2.2-2.el7 を インストール
 ---> パッケージ libX11.x86_64 0:1.6.7-2.el7 を インストール
 --> 依存性の処理をしています: libX11-common >= 1.6.7-2.el7 のパッケージ: libX11-1.6.7-2.el7.x86_64
+---> パッケージ libXcomposite.x86_64 0:0.4.4-4.1.el7 を インストール
 ---> パッケージ libXext.x86_64 0:1.3.3-3.el7 を インストール
+---> パッケージ libXi.x86_64 0:1.7.9-1.el7 を インストール
+---> パッケージ libXrender.x86_64 0:0.9.10-1.el7 を インストール
 ---> パッケージ libXt.x86_64 0:1.1.5-3.el7 を インストール
+---> パッケージ libXtst.x86_64 0:1.2.3-1.el7 を インストール
 ---> パッケージ libao.x86_64 0:1.1.0-8.el7 を インストール
----> パッケージ libass.x86_64 0:0.10.2-2.el7 を インストール
---> 依存性の処理をしています: libharfbuzz.so.0()(64bit) のパッケージ: libass-0.10.2-2.el7.x86_64
---> 依存性の処理をしています: libfribidi.so.0()(64bit) のパッケージ: libass-0.10.2-2.el7.x86_64
---> 依存性の処理をしています: libenca.so.0()(64bit) のパッケージ: libass-0.10.2-2.el7.x86_64
+---> パッケージ libass.x86_64 0:0.13.4-6.el7 を インストール
+--> 依存性の処理をしています: libfribidi.so.0()(64bit) のパッケージ: libass-0.13.4-6.el7.x86_64
+--> 依存性の処理をしています: libharfbuzz.so.0()(64bit) のパッケージ: libass-0.13.4-6.el7.x86_64
 ---> パッケージ libevent.x86_64 0:2.0.21-4.el7 を インストール
 ---> パッケージ libgs.x86_64 0:9.25-2.el7_7.2 を インストール
 --> 依存性の処理をしています: urw-base35-fonts のパッケージ: libgs-9.25-2.el7_7.2.x86_64
@@ -276,6 +324,7 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: adobe-mappings-cmap のパッケージ: libgs-9.25-2.el7_7.2.x86_64
 --> 依存性の処理をしています: libpaper.so.1()(64bit) のパッケージ: libgs-9.25-2.el7_7.2.x86_64
 ---> パッケージ libjpeg-turbo.x86_64 0:1.2.90-8.el7 を インストール
+---> パッケージ libmcrypt.x86_64 0:2.5.8-13.el7 を インストール
 ---> パッケージ libogg.x86_64 2:1.3.0-7.el7 を インストール
 ---> パッケージ librsvg2.x86_64 0:2.40.20-1.el7 を インストール
 ---> パッケージ librtmp.x86_64 0:2.4-2.20131205.gitdc76f0a.el7.nux を インストール
@@ -294,8 +343,10 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ lksctp-tools.x86_64 0:1.0.17-2.el7 を インストール
 ---> パッケージ mailcap.noarch 0:2.1.41-2.el7 を インストール
 ---> パッケージ mailx.x86_64 0:12.5-19.el7 を インストール
----> パッケージ mysql-community-client.x86_64 0:8.0.18-1.el7 を インストール
---> 依存性の処理をしています: mysql-community-libs(x86-64) >= 8.0.11 のパッケージ: mysql-community-client-8.0.18-1.el7.x86_64
+---> パッケージ mariadb.x86_64 1:5.5.64-1.el7 を インストール
+--> 依存性の処理をしています: perl(Getopt::Long) のパッケージ: 1:mariadb-5.5.64-1.el7.x86_64
+--> 依存性の処理をしています: perl(File::Temp) のパッケージ: 1:mariadb-5.5.64-1.el7.x86_64
+--> 依存性の処理をしています: perl(Exporter) のパッケージ: 1:mariadb-5.5.64-1.el7.x86_64
 ---> パッケージ nodejs.x86_64 2:9.11.2-1nodesource を インストール
 ---> パッケージ openjpeg-libs.x86_64 0:1.5.1-18.el7 を インストール
 ---> パッケージ openjpeg2.x86_64 0:2.3.1-1.el7 を インストール
@@ -322,14 +373,11 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: perl(Scalar::Util) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(Pod::Simple::XHTML) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(Pod::Simple::Search) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
---> 依存性の処理をしています: perl(Getopt::Long) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(Filter::Util::Call) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
---> 依存性の処理をしています: perl(File::Temp) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(File::Spec::Unix) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(File::Spec::Functions) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(File::Spec) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(File::Path) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
---> 依存性の処理をしています: perl(Exporter) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(Cwd) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: perl(Carp) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
 --> 依存性の処理をしています: libperl.so()(64bit) のパッケージ: 4:perl-5.16.3-294.el7_6.x86_64
@@ -347,7 +395,6 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ php-xml.x86_64 0:5.4.16-46.el7 を インストール
 ---> パッケージ pulseaudio-libs.x86_64 0:10.0-5.el7 を インストール
 --> 依存性の処理をしています: libasyncns.so.0()(64bit) のパッケージ: pulseaudio-libs-10.0-5.el7.x86_64
---> 依存性の処理をしています: libXtst.so.6()(64bit) のパッケージ: pulseaudio-libs-10.0-5.el7.x86_64
 ---> パッケージ redhat-lsb-core.x86_64 0:4.1-27.el7.centos.1 を インストール
 --> 依存性の処理をしています: redhat-lsb-submod-security(x86-64) = 4.1-27.el7.centos.1 のパッケージ: redhat-lsb-core-4.1-27.el7.centos.1.x86_64
 --> 依存性の処理をしています: spax のパッケージ: redhat-lsb-core-4.1-27.el7.centos.1.x86_64
@@ -368,29 +415,39 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ tzdata-java.noarch 0:2019c-1.el7 を インストール
 ---> パッケージ unzip.x86_64 0:6.0-20.el7 を インストール
 ---> パッケージ wavpack.x86_64 0:4.60.1-9.el7 を インストール
+---> パッケージ wget.x86_64 0:1.14-18.el7_6.1 を インストール
 ---> パッケージ x265-libs.x86_64 0:2.6-1 を インストール
+---> パッケージ xorg-x11-fonts-Type1.noarch 0:7.5-9.el7 を インストール
+--> 依存性の処理をしています: ttmkfdir のパッケージ: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> 依存性の処理をしています: ttmkfdir のパッケージ: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> 依存性の処理をしています: mkfontdir のパッケージ: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> 依存性の処理をしています: mkfontdir のパッケージ: xorg-x11-fonts-Type1-7.5-9.el7.noarch
 --> トランザクションの確認を実行しています。
 ---> パッケージ adobe-mappings-cmap.noarch 0:20171205-3.el7 を インストール
 ---> パッケージ adobe-mappings-cmap-deprecated.noarch 0:20171205-3.el7 を インストール
 ---> パッケージ adobe-mappings-pdf.noarch 0:20180407-1.el7 を インストール
 ---> パッケージ at.x86_64 0:3.1.13-24.el7 を インストール
+---> パッケージ atk.x86_64 0:2.28.1-1.el7 を インストール
 ---> パッケージ avahi-libs.x86_64 0:0.6.31-19.el7 を インストール
 ---> パッケージ cups-client.x86_64 1:1.6.3-40.el7 を インストール
 ---> パッケージ dejavu-sans-fonts.noarch 0:2.33-6.el7 を インストール
 --> 依存性の処理をしています: dejavu-fonts-common = 2.33-6.el7 のパッケージ: dejavu-sans-fonts-2.33-6.el7.noarch
 ---> パッケージ ed.x86_64 0:1.9-4.el7 を インストール
----> パッケージ enca.x86_64 0:1.14-1.el7 を インストール
 ---> パッケージ fontpackages-filesystem.noarch 0:1.44-8.el7 を インストール
 ---> パッケージ fribidi.x86_64 0:1.0.2-1.el7 を インストール
+---> パッケージ gtk-update-icon-cache.x86_64 0:3.22.30-3.el7 を インストール
 ---> パッケージ harfbuzz.x86_64 0:1.7.5-2.el7 を インストール
 --> 依存性の処理をしています: libgraphite2.so.3()(64bit) のパッケージ: harfbuzz-1.7.5-2.el7.x86_64
+---> パッケージ hicolor-icon-theme.noarch 0:0.12-7.el7 を インストール
 ---> パッケージ jbigkit-libs.x86_64 0:2.0-11.el7 を インストール
 ---> パッケージ libX11-common.noarch 0:1.6.7-2.el7 を インストール
+---> パッケージ libXcursor.x86_64 0:1.1.15-1.el7 を インストール
+---> パッケージ libXdamage.x86_64 0:1.1.4-4.1.el7 を インストール
+---> パッケージ libXfixes.x86_64 0:5.0.3-1.el7 を インストール
 ---> パッケージ libXft.x86_64 0:2.3.2-2.el7 を インストール
+---> パッケージ libXinerama.x86_64 0:1.1.3-2.1.el7 を インストール
 ---> パッケージ libXpm.x86_64 0:3.5.12-1.el7 を インストール
----> パッケージ libXrender.x86_64 0:0.9.10-1.el7 を インストール
----> パッケージ libXtst.x86_64 0:1.2.3-1.el7 を インストール
---> 依存性の処理をしています: libXi.so.6()(64bit) のパッケージ: libXtst-1.2.3-1.el7.x86_64
+---> パッケージ libXrandr.x86_64 0:1.5.1-2.el7 を インストール
 ---> パッケージ libasyncns.x86_64 0:0.8-7.el7 を インストール
 ---> パッケージ libglvnd-egl.x86_64 1:1.0.1-0.8.git5baa1e5.el7 を インストール
 --> 依存性の処理をしています: libglvnd(x86-64) = 1:1.0.1-0.8.git5baa1e5.el7 のパッケージ: 1:libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64
@@ -405,15 +462,6 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ libxslt.x86_64 0:1.1.28-5.el7 を インストール
 ---> パッケージ libzip.x86_64 0:0.10.1-8.el7 を インストール
 ---> パッケージ m4.x86_64 0:1.4.16-10.el7 を インストール
----> パッケージ mariadb-libs.x86_64 1:5.5.64-1.el7 を 不要
---> 依存性の処理をしています: libmysqlclient.so.18()(64bit) のパッケージ: kaltura-sphinx-2.2.1-21.x86_64
---> 依存性の処理をしています: libmysqlclient.so.18()(64bit) のパッケージ: 2:postfix-2.10.1-7.el7.x86_64
---> 依存性の処理をしています: libmysqlclient.so.18()(64bit) のパッケージ: php-mysql-5.4.16-46.el7.x86_64
---> 依存性の処理をしています: libmysqlclient.so.18(libmysqlclient_18)(64bit) のパッケージ: kaltura-sphinx-2.2.1-21.x86_64
---> 依存性の処理をしています: libmysqlclient.so.18(libmysqlclient_18)(64bit) のパッケージ: 2:postfix-2.10.1-7.el7.x86_64
---> 依存性の処理をしています: libmysqlclient.so.18(libmysqlclient_18)(64bit) のパッケージ: php-mysql-5.4.16-46.el7.x86_64
----> パッケージ mysql-community-libs.x86_64 0:8.0.18-1.el7 を 非推奨
---> 依存性の処理をしています: mysql-community-common(x86-64) >= 8.0.11 のパッケージ: mysql-community-libs-8.0.18-1.el7.x86_64
 ---> パッケージ nettle.x86_64 0:2.7.1-8.el7 を インストール
 ---> パッケージ orc.x86_64 0:0.4.26-1.el7 を インストール
 ---> パッケージ patch.x86_64 0:2.7.1-11.el7 を インストール
@@ -448,6 +496,7 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ t1lib.x86_64 0:5.1.2-14.el7 を インストール
 ---> パッケージ time.x86_64 0:1.7-45.el7 を インストール
 ---> パッケージ trousers.x86_64 0:0.3.14-2.el7 を インストール
+---> パッケージ ttmkfdir.x86_64 0:3.0.9-42.el7 を インストール
 ---> パッケージ urw-base35-fonts.noarch 0:20170801-10.el7 を インストール
 --> 依存性の処理をしています: urw-base35-fonts-common = 20170801-10.el7 のパッケージ: urw-base35-fonts-20170801-10.el7.noarch
 --> 依存性の処理をしています: urw-base35-z003-fonts のパッケージ: urw-base35-fonts-20170801-10.el7.noarch
@@ -460,11 +509,13 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: urw-base35-d050000l-fonts のパッケージ: urw-base35-fonts-20170801-10.el7.noarch
 --> 依存性の処理をしています: urw-base35-c059-fonts のパッケージ: urw-base35-fonts-20170801-10.el7.noarch
 --> 依存性の処理をしています: urw-base35-bookman-fonts のパッケージ: urw-base35-fonts-20170801-10.el7.noarch
+---> パッケージ xorg-x11-font-utils.x86_64 1:7.5-21.el7 を インストール
+--> 依存性の処理をしています: libfontenc.so.1()(64bit) のパッケージ: 1:xorg-x11-font-utils-7.5-21.el7.x86_64
 --> トランザクションの確認を実行しています。
 ---> パッケージ dejavu-fonts-common.noarch 0:2.33-6.el7 を インストール
 ---> パッケージ graphite2.x86_64 0:1.3.10-1.el7_3 を インストール
 ---> パッケージ libXau.x86_64 0:1.0.8-2.1.el7 を インストール
----> パッケージ libXi.x86_64 0:1.7.9-1.el7 を インストール
+---> パッケージ libfontenc.x86_64 0:1.1.3-3.el7 を インストール
 ---> パッケージ libglvnd.x86_64 1:1.0.1-0.8.git5baa1e5.el7 を インストール
 ---> パッケージ mesa-libEGL.x86_64 0:18.3.4-5.el7 を インストール
 --> 依存性の処理をしています: mesa-libgbm = 18.3.4-5.el7 のパッケージ: mesa-libEGL-18.3.4-5.el7.x86_64
@@ -475,10 +526,6 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: libgbm.so.1()(64bit) のパッケージ: mesa-libEGL-18.3.4-5.el7.x86_64
 ---> パッケージ mesa-libGL.x86_64 0:18.3.4-5.el7 を インストール
 --> 依存性の処理をしています: libXxf86vm.so.1()(64bit) のパッケージ: mesa-libGL-18.3.4-5.el7.x86_64
---> 依存性の処理をしています: libXfixes.so.3()(64bit) のパッケージ: mesa-libGL-18.3.4-5.el7.x86_64
---> 依存性の処理をしています: libXdamage.so.1()(64bit) のパッケージ: mesa-libGL-18.3.4-5.el7.x86_64
----> パッケージ mysql-community-common.x86_64 0:8.0.18-1.el7 を インストール
----> パッケージ mysql-community-libs-compat.x86_64 0:8.0.18-1.el7 を 非推奨
 ---> パッケージ perl-Encode.x86_64 0:2.51-7.el7 を インストール
 ---> パッケージ perl-Pod-Escapes.noarch 1:1.04-294.el7_6 を インストール
 ---> パッケージ perl-Pod-Usage.noarch 0:1.63-3.el7 を インストール
@@ -489,8 +536,6 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ urw-base35-bookman-fonts.noarch 0:20170801-10.el7 を インストール
 --> 依存性の処理をしています: xorg-x11-server-utils のパッケージ: urw-base35-bookman-fonts-20170801-10.el7.noarch
 --> 依存性の処理をしています: xorg-x11-server-utils のパッケージ: urw-base35-bookman-fonts-20170801-10.el7.noarch
---> 依存性の処理をしています: xorg-x11-font-utils のパッケージ: urw-base35-bookman-fonts-20170801-10.el7.noarch
---> 依存性の処理をしています: xorg-x11-font-utils のパッケージ: urw-base35-bookman-fonts-20170801-10.el7.noarch
 ---> パッケージ urw-base35-c059-fonts.noarch 0:20170801-10.el7 を インストール
 ---> パッケージ urw-base35-d050000l-fonts.noarch 0:20170801-10.el7 を インストール
 ---> パッケージ urw-base35-fonts-common.noarch 0:20170801-10.el7 を インストール
@@ -502,8 +547,6 @@ Loading mirror speeds from cached hostfile
 ---> パッケージ urw-base35-standard-symbols-ps-fonts.noarch 0:20170801-10.el7 を インストール
 ---> パッケージ urw-base35-z003-fonts.noarch 0:20170801-10.el7 を インストール
 --> トランザクションの確認を実行しています。
----> パッケージ libXdamage.x86_64 0:1.1.4-4.1.el7 を インストール
----> パッケージ libXfixes.x86_64 0:5.0.3-1.el7 を インストール
 ---> パッケージ libXxf86vm.x86_64 0:1.1.4-1.el7 を インストール
 ---> パッケージ libwayland-client.x86_64 0:1.15.0-1.el7 を インストール
 ---> パッケージ libwayland-server.x86_64 0:1.15.0-1.el7 を インストール
@@ -514,504 +557,522 @@ Loading mirror speeds from cached hostfile
 --> 依存性の処理をしています: perl(parent) のパッケージ: perl-Pod-Perldoc-3.20-4.el7.noarch
 --> 依存性の処理をしています: perl(HTTP::Tiny) のパッケージ: perl-Pod-Perldoc-3.20-4.el7.noarch
 ---> パッケージ perl-podlators.noarch 0:2.5.1-3.el7 を インストール
----> パッケージ xorg-x11-font-utils.x86_64 1:7.5-21.el7 を インストール
---> 依存性の処理をしています: libfontenc.so.1()(64bit) のパッケージ: 1:xorg-x11-font-utils-7.5-21.el7.x86_64
 ---> パッケージ xorg-x11-server-utils.x86_64 0:7.7-20.el7 を インストール
 --> 依存性の処理をしています: libXxf86misc.so.1()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
---> 依存性の処理をしています: libXrandr.so.2()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
 --> 依存性の処理をしています: libXmuu.so.1()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
 --> 依存性の処理をしています: libXmu.so.6()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
---> 依存性の処理をしています: libXinerama.so.1()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
---> 依存性の処理をしています: libXcursor.so.1()(64bit) のパッケージ: xorg-x11-server-utils-7.7-20.el7.x86_64
 --> トランザクションの確認を実行しています。
----> パッケージ libXcursor.x86_64 0:1.1.15-1.el7 を インストール
----> パッケージ libXinerama.x86_64 0:1.1.3-2.1.el7 を インストール
 ---> パッケージ libXmu.x86_64 0:1.1.2-2.el7 を インストール
----> パッケージ libXrandr.x86_64 0:1.5.1-2.el7 を インストール
 ---> パッケージ libXxf86misc.x86_64 0:1.0.3-7.1.el7 を インストール
----> パッケージ libfontenc.x86_64 0:1.1.3-3.el7 を インストール
 ---> パッケージ perl-HTTP-Tiny.noarch 0:0.033-3.el7 を インストール
 ---> パッケージ perl-parent.noarch 1:0.225-244.el7 を インストール
 --> 依存性解決を終了しました。
 
 依存性を解決しました
 
-================================================================================================================================
- Package                                    アーキテクチャー
-                                                         バージョン                               リポジトリー             容量
-================================================================================================================================
+================================================================================
+ Package                      アーキテクチャー
+                                     バージョン            リポジトリー    容量
+================================================================================
 インストール中:
- kaltura-server                             noarch       15.8.0-1                                 Kaltura-noarch           15 k
- mysql-community-libs                       x86_64       8.0.18-1.el7                             mysql80-community       3.7 M
-     mariadb-libs.x86_64 1:5.5.64-1.el7 を入れ替えます
- mysql-community-libs-compat                x86_64       8.0.18-1.el7                             mysql80-community       1.3 M
-     mariadb-libs.x86_64 1:5.5.64-1.el7 を入れ替えます
+ kaltura-server               noarch 15.8.0-1              Kaltura-noarch  15 k
 依存性関連でのインストールをします:
- ImageMagick                                x86_64       6.7.8.9-18.el7                           base                    2.1 M
- OpenEXR-libs                               x86_64       1.7.1-7.el7                              base                    217 k
- SDL                                        x86_64       1.2.15-14.el7                            base                    204 k
- adobe-mappings-cmap                        noarch       20171205-3.el7                           base                    2.1 M
- adobe-mappings-cmap-deprecated             noarch       20171205-3.el7                           base                    114 k
- adobe-mappings-pdf                         noarch       20180407-1.el7                           base                    703 k
- at                                         x86_64       3.1.13-24.el7                            base                     51 k
- avahi-libs                                 x86_64       0.6.31-19.el7                            base                     61 k
- bc                                         x86_64       1.06.95-13.el7                           base                    115 k
- cairo                                      x86_64       1.15.12-4.el7                            base                    741 k
- copy-jdk-configs                           noarch       3.3-10.el7_5                             base                     21 k
- cups-client                                x86_64       1:1.6.3-40.el7                           base                    151 k
- cups-libs                                  x86_64       1:1.6.3-40.el7                           base                    358 k
- dejavu-fonts-common                        noarch       2.33-6.el7                               base                     64 k
- dejavu-sans-fonts                          noarch       2.33-6.el7                               base                    1.4 M
- ed                                         x86_64       1.9-4.el7                                base                     72 k
- enca                                       x86_64       1.14-1.el7                               Kaltura                 105 k
- flac-libs                                  x86_64       1.3.0-5.el7_1                            base                    169 k
- fontconfig                                 x86_64       2.13.0-4.3.el7                           base                    254 k
- fontpackages-filesystem                    noarch       1.44-8.el7                               base                    9.9 k
- fribidi                                    x86_64       1.0.2-1.el7                              base                     79 k
- gdk-pixbuf2                                x86_64       2.36.12-3.el7                            base                    570 k
- gnutls                                     x86_64       3.3.29-9.el7_6                           base                    680 k
- graphite2                                  x86_64       1.3.10-1.el7_3                           base                    115 k
- gsm                                        x86_64       1.0.13-11.el7                            base                     30 k
- harfbuzz                                   x86_64       1.7.5-2.el7                              base                    267 k
- httpd                                      x86_64       2.4.6-90.el7.centos                      base                    2.7 M
- httpd-tools                                x86_64       2.4.6-90.el7.centos                      base                     91 k
- ilmbase                                    x86_64       1.0.3-7.el7                              base                    100 k
- jasper-libs                                x86_64       1.900.1-33.el7                           base                    150 k
- java-1.8.0-openjdk-headless                x86_64       1:1.8.0.222.b10-1.el7_7                  updates                  32 M
- javapackages-tools                         noarch       3.4.1-11.el7                             base                     73 k
- jbigkit-libs                               x86_64       2.0-11.el7                               base                     46 k
- kaltura-a52dec                             x86_64       0.7.4-11                                 Kaltura                  60 k
- kaltura-base                               noarch       15.8.0-23                                Kaltura-noarch           96 M
- kaltura-batch                              noarch       15.8.0-1                                 Kaltura-noarch           28 k
- kaltura-clipapp                            noarch       1:1.3-2                                  Kaltura-noarch          103 k
- kaltura-dwh                                noarch       12.14.0-1                                Kaltura-noarch           56 M
- kaltura-elasticsearch                      noarch       1.0.0-7                                  Kaltura-noarch          501 k
- kaltura-ffmpeg                             x86_64       4.0.2-1                                  Kaltura                 6.8 M
- kaltura-ffmpeg-aux                         x86_64       2.1.3-2                                  Kaltura                 4.4 M
- kaltura-flexwrapper                        noarch       v1.2-1                                   Kaltura-noarch          8.0 k
- kaltura-front                              noarch       15.8.0-1                                 Kaltura-noarch           19 k
- kaltura-html5-analytics                    noarch       v0.3-2                                   Kaltura-noarch          1.6 M
- kaltura-html5-studio                       noarch       v2.2.1-1                                 Kaltura-noarch          550 k
- kaltura-html5-studio3                      noarch       v3.4.0-1                                 Kaltura-noarch          561 k
- kaltura-html5lib                           noarch       v2.78.2-1                                Kaltura-noarch           87 M
- kaltura-html5lib3                          noarch       0.46.0-1                                 Kaltura-noarch          2.9 M
- kaltura-kclip                              noarch       v1.1.2.1-2                               Kaltura-noarch          1.3 M
- kaltura-kcw                                noarch       1.0.0-6                                  Kaltura-noarch           11 M
- kaltura-kdp                                noarch       v2.7.0-1                                 Kaltura-noarch          1.8 M
- kaltura-kdp3                               noarch       1:v3.9.9-2                               Kaltura-noarch          6.0 M
- kaltura-kdp3wrapper                        noarch       v37.0-1                                  Kaltura-noarch          7.7 k
- kaltura-kdpwrapper                         noarch       v11.0-1                                  Kaltura-noarch          7.3 k
- kaltura-kmc                                noarch       v5.43.13-28                              Kaltura-noarch          216 M
- kaltura-kmcng                              noarch       v5.17.0-1                                Kaltura-noarch          1.5 M
- kaltura-krecord                            noarch       1.0.0-1                                  Kaltura-noarch          193 k
- kaltura-kupload                            noarch       1:v1.2.16-2                              Kaltura-noarch           98 k
- kaltura-lame                               x86_64       3.99.5-3                                 Kaltura                 449 k
- kaltura-libfaac                            x86_64       1.28-1                                   Kaltura                  77 k
- kaltura-libmcrypt                          x86_64       2.5.8-2                                  Kaltura                  89 k
- kaltura-libmediainfo                       x86_64       0.7.61-8                                 Kaltura                 1.6 M
- kaltura-libopencore-amr                    x86_64       0.1.3-1                                  Kaltura                 144 k
- kaltura-libvpx                             x86_64       1.7.0-1                                  Kaltura                 665 k
- kaltura-live-analytics-front               noarch       v2.7.3-2                                 Kaltura-noarch          665 k
- kaltura-mediainfo                          x86_64       0.7.61-9                                 Kaltura                  53 k
- kaltura-monit                              x86_64       5.25.3-1                                 Kaltura                 315 k
- kaltura-nginx                              x86_64       1:1.16.1-1                               Kaltura                 990 k
- kaltura-pentaho                            x86_64       4.2.1-2                                  Kaltura                 231 M
- kaltura-playkit-bundler                    noarch       1.1.1-11                                 Kaltura-noarch           55 k
- kaltura-postinst                           noarch       1.0.33-80                                Kaltura-noarch          109 k
- kaltura-segmenter                          x86_64       1.0-3                                    Kaltura                 2.3 M
- kaltura-sphinx                             x86_64       2.2.1-21                                 Kaltura                 4.9 M
- kaltura-sshpass                            x86_64       1.05-1                                   Kaltura                  19 k
- kaltura-widgets                            noarch       1.0.0-9                                  Kaltura-noarch          4.0 k
- kaltura-x264                               x86_64       0.140-2.20140104                         Kaltura                 482 k
- lcms2                                      x86_64       2.6-3.el7                                base                    150 k
- libICE                                     x86_64       1.0.9-9.el7                              base                     66 k
- libSM                                      x86_64       1.2.2-2.el7                              base                     39 k
- libX11                                     x86_64       1.6.7-2.el7                              base                    607 k
- libX11-common                              noarch       1.6.7-2.el7                              base                    164 k
- libXau                                     x86_64       1.0.8-2.1.el7                            base                     29 k
- libXcursor                                 x86_64       1.1.15-1.el7                             base                     30 k
- libXdamage                                 x86_64       1.1.4-4.1.el7                            base                     20 k
- libXext                                    x86_64       1.3.3-3.el7                              base                     39 k
- libXfixes                                  x86_64       5.0.3-1.el7                              base                     18 k
- libXft                                     x86_64       2.3.2-2.el7                              base                     58 k
- libXi                                      x86_64       1.7.9-1.el7                              base                     40 k
- libXinerama                                x86_64       1.1.3-2.1.el7                            base                     14 k
- libXmu                                     x86_64       1.1.2-2.el7                              base                     71 k
- libXpm                                     x86_64       3.5.12-1.el7                             base                     55 k
- libXrandr                                  x86_64       1.5.1-2.el7                              base                     27 k
- libXrender                                 x86_64       0.9.10-1.el7                             base                     26 k
- libXt                                      x86_64       1.1.5-3.el7                              base                    173 k
- libXtst                                    x86_64       1.2.3-1.el7                              base                     20 k
- libXxf86misc                               x86_64       1.0.3-7.1.el7                            base                     19 k
- libXxf86vm                                 x86_64       1.1.4-1.el7                              base                     18 k
- libao                                      x86_64       1.1.0-8.el7                              base                     72 k
- libass                                     x86_64       0.10.2-2.el7                             Kaltura                  66 k
- libasyncns                                 x86_64       0.8-7.el7                                base                     26 k
- libevent                                   x86_64       2.0.21-4.el7                             base                    214 k
- libfontenc                                 x86_64       1.1.3-3.el7                              base                     31 k
- libglvnd                                   x86_64       1:1.0.1-0.8.git5baa1e5.el7               base                     89 k
- libglvnd-egl                               x86_64       1:1.0.1-0.8.git5baa1e5.el7               base                     44 k
- libglvnd-glx                               x86_64       1:1.0.1-0.8.git5baa1e5.el7               base                    125 k
- libgs                                      x86_64       9.25-2.el7_7.2                           updates                 4.6 M
- libjpeg-turbo                              x86_64       1.2.90-8.el7                             base                    135 k
- libogg                                     x86_64       2:1.3.0-7.el7                            base                     24 k
- libpaper                                   x86_64       1.1.24-8.el7                             base                     37 k
- librdkafka                                 x86_64       0.11.4-1.el7                             base                    337 k
- librsvg2                                   x86_64       2.40.20-1.el7                            base                    132 k
- librtmp                                    x86_64       2.4-2.20131205.gitdc76f0a.el7.nux        Kaltura                  68 k
- libsndfile                                 x86_64       1.0.25-10.el7                            base                    149 k
- libthai                                    x86_64       0.1.14-9.el7                             base                    187 k
- libtheora                                  x86_64       1:1.1.1-8.el7                            base                    136 k
- libtiff                                    x86_64       4.0.3-32.el7                             base                    171 k
- libtool-ltdl                               x86_64       2.4.2-22.el7_3                           base                     49 k
- libvdpau                                   x86_64       1.1.1-3.el7                              base                     34 k
- libvorbis                                  x86_64       1:1.3.3-8.el7.1                          base                    204 k
- libvpx                                     x86_64       1.3.0-5.el7_0                            base                    498 k
- libwayland-client                          x86_64       1.15.0-1.el7                             base                     33 k
- libwayland-server                          x86_64       1.15.0-1.el7                             base                     39 k
- libwmf-lite                                x86_64       0.2.8.4-41.el7_1                         base                     66 k
- libx264                                    x86_64       142-alt1                                 Kaltura                 412 k
- libxcb                                     x86_64       1.13-1.el7                               base                    214 k
- libxshmfence                               x86_64       1.2-1.el7                                base                    7.2 k
- libxslt                                    x86_64       1.1.28-5.el7                             base                    242 k
- libxvidcore4                               x86_64       1.3.5-1                                  Kaltura                 262 k
- libzen                                     x86_64       0.4.37-1.el7                             Kaltura                 108 k
- libzip                                     x86_64       0.10.1-8.el7                             base                     48 k
- lksctp-tools                               x86_64       1.0.17-2.el7                             base                     88 k
- m4                                         x86_64       1.4.16-10.el7                            base                    256 k
- mailcap                                    noarch       2.1.41-2.el7                             base                     31 k
- mailx                                      x86_64       12.5-19.el7                              base                    245 k
- memcached                                  x86_64       1.4.15-10.el7_3.1                        base                     85 k
- mesa-libEGL                                x86_64       18.3.4-5.el7                             base                    109 k
- mesa-libGL                                 x86_64       18.3.4-5.el7                             base                    165 k
- mesa-libgbm                                x86_64       18.3.4-5.el7                             base                     39 k
- mesa-libglapi                              x86_64       18.3.4-5.el7                             base                     45 k
- mod_ssl                                    x86_64       1:2.4.6-90.el7.centos                    base                    112 k
- mysql-community-client                     x86_64       8.0.18-1.el7                             mysql80-community        38 M
- mysql-community-common                     x86_64       8.0.18-1.el7                             mysql80-community       597 k
- nettle                                     x86_64       2.7.1-8.el7                              base                    327 k
- nodejs                                     x86_64       2:9.11.2-1nodesource                     Kaltura                  17 M
- openjpeg-libs                              x86_64       1.5.1-18.el7                             base                     86 k
- openjpeg2                                  x86_64       2.3.1-1.el7                              base                    153 k
- orc                                        x86_64       0.4.26-1.el7                             base                    166 k
- pango                                      x86_64       1.42.4-4.el7_7                           updates                 280 k
- patch                                      x86_64       2.7.1-11.el7                             base                    110 k
- pcsc-lite-libs                             x86_64       1.8.8-8.el7                              base                     34 k
- perl                                       x86_64       4:5.16.3-294.el7_6                       base                    8.0 M
- perl-Carp                                  noarch       1.26-244.el7                             base                     19 k
- perl-Encode                                x86_64       2.51-7.el7                               base                    1.5 M
- perl-Exporter                              noarch       5.68-3.el7                               base                     28 k
- perl-File-Path                             noarch       2.09-2.el7                               base                     26 k
- perl-File-Temp                             noarch       0.23.01-3.el7                            base                     56 k
- perl-Filter                                x86_64       1.49-3.el7                               base                     76 k
- perl-Getopt-Long                           noarch       2.40-3.el7                               base                     56 k
- perl-HTTP-Tiny                             noarch       0.033-3.el7                              base                     38 k
- perl-PathTools                             x86_64       3.40-5.el7                               base                     82 k
- perl-Pod-Escapes                           noarch       1:1.04-294.el7_6                         base                     51 k
- perl-Pod-Perldoc                           noarch       3.20-4.el7                               base                     87 k
- perl-Pod-Simple                            noarch       1:3.28-4.el7                             base                    216 k
- perl-Pod-Usage                             noarch       1.63-3.el7                               base                     27 k
- perl-Scalar-List-Utils                     x86_64       1.27-248.el7                             base                     36 k
- perl-Socket                                x86_64       2.010-4.el7                              base                     49 k
- perl-Storable                              x86_64       2.45-3.el7                               base                     77 k
- perl-Text-ParseWords                       noarch       3.29-4.el7                               base                     14 k
- perl-Time-HiRes                            x86_64       4:1.9725-3.el7                           base                     45 k
- perl-Time-Local                            noarch       1.2300-2.el7                             base                     24 k
- perl-constant                              noarch       1.27-2.el7                               base                     19 k
- perl-libs                                  x86_64       4:5.16.3-294.el7_6                       base                    688 k
- perl-macros                                x86_64       4:5.16.3-294.el7_6                       base                     44 k
- perl-parent                                noarch       1:0.225-244.el7                          base                     12 k
- perl-podlators                             noarch       2.5.1-3.el7                              base                    112 k
- perl-threads                               x86_64       1.87-4.el7                               base                     49 k
- perl-threads-shared                        x86_64       1.43-6.el7                               base                     39 k
- php                                        x86_64       5.4.16-46.el7                            base                    1.4 M
- php-cli                                    x86_64       5.4.16-46.el7                            base                    2.7 M
- php-common                                 x86_64       5.4.16-46.el7                            base                    565 k
- php-gd                                     x86_64       5.4.16-46.el7                            base                    128 k
- php-ldap                                   x86_64       5.4.16-46.el7                            base                     53 k
- php-mbstring                               x86_64       5.4.16-46.el7                            base                    505 k
- php-mcrypt                                 x86_64       5.4.35-1                                 Kaltura                  17 k
- php-mysql                                  x86_64       5.4.16-46.el7                            base                    101 k
- php-pdo                                    x86_64       5.4.16-46.el7                            base                     99 k
- php-pear                                   noarch       1:1.9.4-21.el7                           base                    357 k
- php-pecl-apc                               x86_64       3.1.13-1                                 Kaltura                  67 k
- php-pecl-memcache                          x86_64       3.0.8-4.el7                              base                     67 k
- php-pecl-ssh2                              x86_64       0.12-1                                   Kaltura                  31 k
- php-process                                x86_64       5.4.16-46.el7                            base                     56 k
- php-xml                                    x86_64       5.4.16-46.el7                            base                    126 k
- pixman                                     x86_64       0.34.0-1.el7                             base                    248 k
- psmisc                                     x86_64       22.20-16.el7                             base                    141 k
- pulseaudio-libs                            x86_64       10.0-5.el7                               base                    651 k
- python-javapackages                        noarch       3.4.1-11.el7                             base                     31 k
- python-lxml                                x86_64       3.2.1-4.el7                              base                    758 k
- redhat-lsb-core                            x86_64       4.1-27.el7.centos.1                      base                     38 k
- redhat-lsb-submod-security                 x86_64       4.1-27.el7.centos.1                      base                     15 k
- rsync                                      x86_64       3.1.2-6.el7_6.1                          base                    404 k
- schroedinger                               x86_64       1.0.11-4.el7                             Kaltura                 290 k
- sox                                        x86_64       14.4.1-7.el7                             base                    398 k
- spax                                       x86_64       1.5.2-13.el7                             base                    260 k
- speex                                      x86_64       1.2-0.19.rc1.el7                         base                     98 k
- t1lib                                      x86_64       5.1.2-14.el7                             base                    166 k
- time                                       x86_64       1.7-45.el7                               base                     30 k
- trousers                                   x86_64       0.3.14-2.el7                             base                    289 k
- tzdata-java                                noarch       2019c-1.el7                              updates                 187 k
- unzip                                      x86_64       6.0-20.el7                               base                    170 k
- urw-base35-bookman-fonts                   noarch       20170801-10.el7                          base                    852 k
- urw-base35-c059-fonts                      noarch       20170801-10.el7                          base                    879 k
- urw-base35-d050000l-fonts                  noarch       20170801-10.el7                          base                     75 k
- urw-base35-fonts                           noarch       20170801-10.el7                          base                    7.6 k
- urw-base35-fonts-common                    noarch       20170801-10.el7                          base                     19 k
- urw-base35-gothic-fonts                    noarch       20170801-10.el7                          base                    650 k
- urw-base35-nimbus-mono-ps-fonts            noarch       20170801-10.el7                          base                    796 k
- urw-base35-nimbus-roman-fonts              noarch       20170801-10.el7                          base                    860 k
- urw-base35-nimbus-sans-fonts               noarch       20170801-10.el7                          base                    1.3 M
- urw-base35-p052-fonts                      noarch       20170801-10.el7                          base                    978 k
- urw-base35-standard-symbols-ps-fonts       noarch       20170801-10.el7                          base                     40 k
- urw-base35-z003-fonts                      noarch       20170801-10.el7                          base                    275 k
- wavpack                                    x86_64       4.60.1-9.el7                             base                    131 k
- x265-libs                                  x86_64       2.6-1                                    Kaltura                 1.6 M
- xorg-x11-font-utils                        x86_64       1:7.5-21.el7                             base                    104 k
- xorg-x11-server-utils                      x86_64       7.7-20.el7                               base                    178 k
+ ImageMagick                  x86_64 6.7.8.9-18.el7        base           2.1 M
+ OpenEXR-libs                 x86_64 1.7.1-7.el7           base           217 k
+ SDL                          x86_64 1.2.15-14.el7         base           204 k
+ adobe-mappings-cmap          noarch 20171205-3.el7        base           2.1 M
+ adobe-mappings-cmap-deprecated
+                              noarch 20171205-3.el7        base           114 k
+ adobe-mappings-pdf           noarch 20180407-1.el7        base           703 k
+ apr                          x86_64 1.4.8-5.el7           base           103 k
+ apr-util                     x86_64 1.5.2-6.el7           base            92 k
+ at                           x86_64 3.1.13-24.el7         base            51 k
+ atk                          x86_64 2.28.1-1.el7          base           263 k
+ avahi-libs                   x86_64 0.6.31-19.el7         base            61 k
+ bc                           x86_64 1.06.95-13.el7        base           115 k
+ cairo                        x86_64 1.15.12-4.el7         base           741 k
+ copy-jdk-configs             noarch 3.3-10.el7_5          base            21 k
+ cups-client                  x86_64 1:1.6.3-40.el7        base           151 k
+ cups-libs                    x86_64 1:1.6.3-40.el7        base           358 k
+ dejavu-fonts-common          noarch 2.33-6.el7            base            64 k
+ dejavu-sans-fonts            noarch 2.33-6.el7            base           1.4 M
+ ed                           x86_64 1.9-4.el7             base            72 k
+ flac-libs                    x86_64 1.3.0-5.el7_1         base           169 k
+ fontconfig                   x86_64 2.13.0-4.3.el7        base           254 k
+ fontpackages-filesystem      noarch 1.44-8.el7            base           9.9 k
+ fribidi                      x86_64 1.0.2-1.el7           base            79 k
+ gdk-pixbuf2                  x86_64 2.36.12-3.el7         base           570 k
+ giflib                       x86_64 4.1.6-9.el7           base            40 k
+ gnutls                       x86_64 3.3.29-9.el7_6        base           680 k
+ graphite2                    x86_64 1.3.10-1.el7_3        base           115 k
+ gsm                          x86_64 1.0.13-11.el7         base            30 k
+ gtk-update-icon-cache        x86_64 3.22.30-3.el7         base            28 k
+ gtk2                         x86_64 2.24.31-1.el7         base           3.4 M
+ harfbuzz                     x86_64 1.7.5-2.el7           base           267 k
+ hicolor-icon-theme           noarch 0.12-7.el7            base            42 k
+ httpd                        x86_64 2.4.6-90.el7.centos   base           2.7 M
+ httpd-tools                  x86_64 2.4.6-90.el7.centos   base            91 k
+ ilmbase                      x86_64 1.0.3-7.el7           base           100 k
+ jasper-libs                  x86_64 1.900.1-33.el7        base           150 k
+ java-1.8.0-openjdk           x86_64 1:1.8.0.222.b10-1.el7_7
+                                                           updates        288 k
+ java-1.8.0-openjdk-headless  x86_64 1:1.8.0.222.b10-1.el7_7
+                                                           updates         32 M
+ javapackages-tools           noarch 3.4.1-11.el7          base            73 k
+ jbigkit-libs                 x86_64 2.0-11.el7            base            46 k
+ kaltura-a52dec               x86_64 0.7.4-11              Kaltura         60 k
+ kaltura-base                 noarch 15.8.0-23             Kaltura-noarch  96 M
+ kaltura-batch                noarch 15.8.0-1              Kaltura-noarch  28 k
+ kaltura-clipapp              noarch 1:1.3-2               Kaltura-noarch 103 k
+ kaltura-dwh                  noarch 12.14.0-1             Kaltura-noarch  56 M
+ kaltura-elasticsearch        noarch 1.0.0-7               Kaltura-noarch 501 k
+ kaltura-ffmpeg               x86_64 4.0.2-1               Kaltura        6.8 M
+ kaltura-ffmpeg-aux           x86_64 2.1.3-2               Kaltura        4.4 M
+ kaltura-flexwrapper          noarch v1.2-1                Kaltura-noarch 8.0 k
+ kaltura-front                noarch 15.8.0-1              Kaltura-noarch  19 k
+ kaltura-html5-analytics      noarch v0.3-2                Kaltura-noarch 1.6 M
+ kaltura-html5-studio         noarch v2.2.1-1              Kaltura-noarch 550 k
+ kaltura-html5-studio3        noarch v3.4.0-1              Kaltura-noarch 561 k
+ kaltura-html5lib             noarch v2.78.2-1             Kaltura-noarch  87 M
+ kaltura-html5lib3            noarch 0.46.0-1              Kaltura-noarch 2.9 M
+ kaltura-kclip                noarch v1.1.2.1-2            Kaltura-noarch 1.3 M
+ kaltura-kcw                  noarch 1.0.0-6               Kaltura-noarch  11 M
+ kaltura-kdp                  noarch v2.7.0-1              Kaltura-noarch 1.8 M
+ kaltura-kdp3                 noarch 1:v3.9.9-2            Kaltura-noarch 6.0 M
+ kaltura-kdp3wrapper          noarch v37.0-1               Kaltura-noarch 7.7 k
+ kaltura-kdpwrapper           noarch v11.0-1               Kaltura-noarch 7.3 k
+ kaltura-kmc                  noarch v5.43.13-28           Kaltura-noarch 216 M
+ kaltura-kmcng                noarch v5.17.0-1             Kaltura-noarch 1.5 M
+ kaltura-krecord              noarch 1.0.0-1               Kaltura-noarch 193 k
+ kaltura-kupload              noarch 1:v1.2.16-2           Kaltura-noarch  98 k
+ kaltura-lame                 x86_64 3.99.5-3              Kaltura        449 k
+ kaltura-libfaac              x86_64 1.28-1                Kaltura         77 k
+ kaltura-libmediainfo         x86_64 0.7.61-8              Kaltura        1.6 M
+ kaltura-libopencore-amr      x86_64 0.1.3-1               Kaltura        144 k
+ kaltura-libvpx               x86_64 1.7.0-1               Kaltura        665 k
+ kaltura-live-analytics-front noarch v2.7.3-2              Kaltura-noarch 665 k
+ kaltura-mediainfo            x86_64 0.7.61-9              Kaltura         53 k
+ kaltura-monit                x86_64 5.25.3-1              Kaltura        315 k
+ kaltura-nginx                x86_64 1:1.16.1-1            Kaltura        990 k
+ kaltura-pentaho              x86_64 4.2.1-2               Kaltura        231 M
+ kaltura-playkit-bundler      noarch 1.1.1-11              Kaltura-noarch  55 k
+ kaltura-postinst             noarch 1.0.33-80             Kaltura-noarch 109 k
+ kaltura-segmenter            x86_64 1.0-3                 Kaltura        2.3 M
+ kaltura-sphinx               x86_64 2.2.1-21              Kaltura        4.9 M
+ kaltura-sshpass              x86_64 1.05-1                Kaltura         19 k
+ kaltura-widgets              noarch 1.0.0-9               Kaltura-noarch 4.0 k
+ kaltura-x264                 x86_64 0.140-2.20140104      Kaltura        482 k
+ lcms2                        x86_64 2.6-3.el7             base           150 k
+ libICE                       x86_64 1.0.9-9.el7           base            66 k
+ libSM                        x86_64 1.2.2-2.el7           base            39 k
+ libX11                       x86_64 1.6.7-2.el7           base           607 k
+ libX11-common                noarch 1.6.7-2.el7           base           164 k
+ libXau                       x86_64 1.0.8-2.1.el7         base            29 k
+ libXcomposite                x86_64 0.4.4-4.1.el7         base            22 k
+ libXcursor                   x86_64 1.1.15-1.el7          base            30 k
+ libXdamage                   x86_64 1.1.4-4.1.el7         base            20 k
+ libXext                      x86_64 1.3.3-3.el7           base            39 k
+ libXfixes                    x86_64 5.0.3-1.el7           base            18 k
+ libXft                       x86_64 2.3.2-2.el7           base            58 k
+ libXi                        x86_64 1.7.9-1.el7           base            40 k
+ libXinerama                  x86_64 1.1.3-2.1.el7         base            14 k
+ libXmu                       x86_64 1.1.2-2.el7           base            71 k
+ libXpm                       x86_64 3.5.12-1.el7          base            55 k
+ libXrandr                    x86_64 1.5.1-2.el7           base            27 k
+ libXrender                   x86_64 0.9.10-1.el7          base            26 k
+ libXt                        x86_64 1.1.5-3.el7           base           173 k
+ libXtst                      x86_64 1.2.3-1.el7           base            20 k
+ libXxf86misc                 x86_64 1.0.3-7.1.el7         base            19 k
+ libXxf86vm                   x86_64 1.1.4-1.el7           base            18 k
+ libao                        x86_64 1.1.0-8.el7           base            72 k
+ libass                       x86_64 0.13.4-6.el7          epel            99 k
+ libasyncns                   x86_64 0.8-7.el7             base            26 k
+ libevent                     x86_64 2.0.21-4.el7          base           214 k
+ libfontenc                   x86_64 1.1.3-3.el7           base            31 k
+ libglvnd                     x86_64 1:1.0.1-0.8.git5baa1e5.el7
+                                                           base            89 k
+ libglvnd-egl                 x86_64 1:1.0.1-0.8.git5baa1e5.el7
+                                                           base            44 k
+ libglvnd-glx                 x86_64 1:1.0.1-0.8.git5baa1e5.el7
+                                                           base           125 k
+ libgs                        x86_64 9.25-2.el7_7.2        updates        4.6 M
+ libjpeg-turbo                x86_64 1.2.90-8.el7          base           135 k
+ libmcrypt                    x86_64 2.5.8-13.el7          epel            99 k
+ libogg                       x86_64 2:1.3.0-7.el7         base            24 k
+ libpaper                     x86_64 1.1.24-8.el7          base            37 k
+ librdkafka                   x86_64 0.11.5-1.el7          epel           368 k
+ librsvg2                     x86_64 2.40.20-1.el7         base           132 k
+ librtmp                      x86_64 2.4-2.20131205.gitdc76f0a.el7.nux
+                                                           Kaltura         68 k
+ libsndfile                   x86_64 1.0.25-10.el7         base           149 k
+ libthai                      x86_64 0.1.14-9.el7          base           187 k
+ libtheora                    x86_64 1:1.1.1-8.el7         base           136 k
+ libtiff                      x86_64 4.0.3-32.el7          base           171 k
+ libtool-ltdl                 x86_64 2.4.2-22.el7_3        base            49 k
+ libvdpau                     x86_64 1.1.1-3.el7           base            34 k
+ libvorbis                    x86_64 1:1.3.3-8.el7.1       base           204 k
+ libvpx                       x86_64 1.3.0-5.el7_0         base           498 k
+ libwayland-client            x86_64 1.15.0-1.el7          base            33 k
+ libwayland-server            x86_64 1.15.0-1.el7          base            39 k
+ libwmf-lite                  x86_64 0.2.8.4-41.el7_1      base            66 k
+ libx264                      x86_64 142-alt1              Kaltura        412 k
+ libxcb                       x86_64 1.13-1.el7            base           214 k
+ libxshmfence                 x86_64 1.2-1.el7             base           7.2 k
+ libxslt                      x86_64 1.1.28-5.el7          base           242 k
+ libxvidcore4                 x86_64 1.3.5-1               Kaltura        262 k
+ libzen                       x86_64 0.4.37-1.el7          Kaltura        108 k
+ libzip                       x86_64 0.10.1-8.el7          base            48 k
+ lksctp-tools                 x86_64 1.0.17-2.el7          base            88 k
+ m4                           x86_64 1.4.16-10.el7         base           256 k
+ mailcap                      noarch 2.1.41-2.el7          base            31 k
+ mailx                        x86_64 12.5-19.el7           base           245 k
+ mariadb                      x86_64 1:5.5.64-1.el7        base           8.7 M
+ memcached                    x86_64 1.4.15-10.el7_3.1     base            85 k
+ mesa-libEGL                  x86_64 18.3.4-5.el7          base           109 k
+ mesa-libGL                   x86_64 18.3.4-5.el7          base           165 k
+ mesa-libgbm                  x86_64 18.3.4-5.el7          base            39 k
+ mesa-libglapi                x86_64 18.3.4-5.el7          base            45 k
+ mod_ssl                      x86_64 1:2.4.6-90.el7.centos base           112 k
+ nettle                       x86_64 2.7.1-8.el7           base           327 k
+ nodejs                       x86_64 2:9.11.2-1nodesource  Kaltura         17 M
+ openjpeg-libs                x86_64 1.5.1-18.el7          base            86 k
+ openjpeg2                    x86_64 2.3.1-1.el7           base           153 k
+ orc                          x86_64 0.4.26-1.el7          base           166 k
+ pango                        x86_64 1.42.4-4.el7_7        updates        280 k
+ patch                        x86_64 2.7.1-11.el7          base           110 k
+ pcsc-lite-libs               x86_64 1.8.8-8.el7           base            34 k
+ perl                         x86_64 4:5.16.3-294.el7_6    base           8.0 M
+ perl-Carp                    noarch 1.26-244.el7          base            19 k
+ perl-Encode                  x86_64 2.51-7.el7            base           1.5 M
+ perl-Exporter                noarch 5.68-3.el7            base            28 k
+ perl-File-Path               noarch 2.09-2.el7            base            26 k
+ perl-File-Temp               noarch 0.23.01-3.el7         base            56 k
+ perl-Filter                  x86_64 1.49-3.el7            base            76 k
+ perl-Getopt-Long             noarch 2.40-3.el7            base            56 k
+ perl-HTTP-Tiny               noarch 0.033-3.el7           base            38 k
+ perl-PathTools               x86_64 3.40-5.el7            base            82 k
+ perl-Pod-Escapes             noarch 1:1.04-294.el7_6      base            51 k
+ perl-Pod-Perldoc             noarch 3.20-4.el7            base            87 k
+ perl-Pod-Simple              noarch 1:3.28-4.el7          base           216 k
+ perl-Pod-Usage               noarch 1.63-3.el7            base            27 k
+ perl-Scalar-List-Utils       x86_64 1.27-248.el7          base            36 k
+ perl-Socket                  x86_64 2.010-4.el7           base            49 k
+ perl-Storable                x86_64 2.45-3.el7            base            77 k
+ perl-Text-ParseWords         noarch 3.29-4.el7            base            14 k
+ perl-Time-HiRes              x86_64 4:1.9725-3.el7        base            45 k
+ perl-Time-Local              noarch 1.2300-2.el7          base            24 k
+ perl-constant                noarch 1.27-2.el7            base            19 k
+ perl-libs                    x86_64 4:5.16.3-294.el7_6    base           688 k
+ perl-macros                  x86_64 4:5.16.3-294.el7_6    base            44 k
+ perl-parent                  noarch 1:0.225-244.el7       base            12 k
+ perl-podlators               noarch 2.5.1-3.el7           base           112 k
+ perl-threads                 x86_64 1.87-4.el7            base            49 k
+ perl-threads-shared          x86_64 1.43-6.el7            base            39 k
+ php                          x86_64 5.4.16-46.el7         base           1.4 M
+ php-cli                      x86_64 5.4.16-46.el7         base           2.7 M
+ php-common                   x86_64 5.4.16-46.el7         base           565 k
+ php-gd                       x86_64 5.4.16-46.el7         base           128 k
+ php-ldap                     x86_64 5.4.16-46.el7         base            53 k
+ php-mbstring                 x86_64 5.4.16-46.el7         base           505 k
+ php-mcrypt                   x86_64 5.4.35-1              Kaltura         17 k
+ php-mysql                    x86_64 5.4.16-46.el7         base           101 k
+ php-pdo                      x86_64 5.4.16-46.el7         base            99 k
+ php-pear                     noarch 1:1.9.4-21.el7        base           357 k
+ php-pecl-apcu                x86_64 4.0.11-1.el7          epel            62 k
+ php-pecl-memcache            x86_64 3.0.8-4.el7           base            67 k
+ php-pecl-ssh2                x86_64 0.12-1.el7            epel            34 k
+ php-process                  x86_64 5.4.16-46.el7         base            56 k
+ php-xml                      x86_64 5.4.16-46.el7         base           126 k
+ pixman                       x86_64 0.34.0-1.el7          base           248 k
+ psmisc                       x86_64 22.20-16.el7          base           141 k
+ pulseaudio-libs              x86_64 10.0-5.el7            base           651 k
+ python-javapackages          noarch 3.4.1-11.el7          base            31 k
+ python-lxml                  x86_64 3.2.1-4.el7           base           758 k
+ redhat-lsb-core              x86_64 4.1-27.el7.centos.1   base            38 k
+ redhat-lsb-submod-security   x86_64 4.1-27.el7.centos.1   base            15 k
+ rsync                        x86_64 3.1.2-6.el7_6.1       base           404 k
+ schroedinger                 x86_64 1.0.11-4.el7          Kaltura        290 k
+ sox                          x86_64 14.4.1-7.el7          base           398 k
+ spax                         x86_64 1.5.2-13.el7          base           260 k
+ speex                        x86_64 1.2-0.19.rc1.el7      base            98 k
+ t1lib                        x86_64 5.1.2-14.el7          base           166 k
+ time                         x86_64 1.7-45.el7            base            30 k
+ trousers                     x86_64 0.3.14-2.el7          base           289 k
+ ttmkfdir                     x86_64 3.0.9-42.el7          base            48 k
+ tzdata-java                  noarch 2019c-1.el7           updates        187 k
+ unzip                        x86_64 6.0-20.el7            base           170 k
+ urw-base35-bookman-fonts     noarch 20170801-10.el7       base           852 k
+ urw-base35-c059-fonts        noarch 20170801-10.el7       base           879 k
+ urw-base35-d050000l-fonts    noarch 20170801-10.el7       base            75 k
+ urw-base35-fonts             noarch 20170801-10.el7       base           7.6 k
+ urw-base35-fonts-common      noarch 20170801-10.el7       base            19 k
+ urw-base35-gothic-fonts      noarch 20170801-10.el7       base           650 k
+ urw-base35-nimbus-mono-ps-fonts
+                              noarch 20170801-10.el7       base           796 k
+ urw-base35-nimbus-roman-fonts
+                              noarch 20170801-10.el7       base           860 k
+ urw-base35-nimbus-sans-fonts noarch 20170801-10.el7       base           1.3 M
+ urw-base35-p052-fonts        noarch 20170801-10.el7       base           978 k
+ urw-base35-standard-symbols-ps-fonts
+                              noarch 20170801-10.el7       base            40 k
+ urw-base35-z003-fonts        noarch 20170801-10.el7       base           275 k
+ wavpack                      x86_64 4.60.1-9.el7          base           131 k
+ wget                         x86_64 1.14-18.el7_6.1       base           547 k
+ x265-libs                    x86_64 2.6-1                 Kaltura        1.6 M
+ xorg-x11-font-utils          x86_64 1:7.5-21.el7          base           104 k
+ xorg-x11-fonts-Type1         noarch 7.5-9.el7             base           521 k
+ xorg-x11-server-utils        x86_64 7.7-20.el7            base           178 k
 
 トランザクションの要約
-================================================================================================================================
-インストール  3 パッケージ (+225 個の依存関係のパッケージ)
+================================================================================
+インストール  1 パッケージ (+235 個の依存関係のパッケージ)
 
-総ダウンロード容量: 889 M
+総ダウンロード容量: 860 M
+インストール容量: 1.8 G
 Background downloading packages, then exiting:
-(1/228): OpenEXR-libs-1.7.1-7.el7.x86_64.rpm                                                             | 217 kB  00:00:01     
-(2/228): SDL-1.2.15-14.el7.x86_64.rpm                                                                    | 204 kB  00:00:01     
-(3/228): adobe-mappings-cmap-deprecated-20171205-3.el7.noarch.rpm                                        | 114 kB  00:00:01     
-(4/228): at-3.1.13-24.el7.x86_64.rpm                                                                     |  51 kB  00:00:00     
-(5/228): bc-1.06.95-13.el7.x86_64.rpm                                                                    | 115 kB  00:00:00     
-(6/228): avahi-libs-0.6.31-19.el7.x86_64.rpm                                                             |  61 kB  00:00:00     
-(7/228): copy-jdk-configs-3.3-10.el7_5.noarch.rpm                                                        |  21 kB  00:00:00     
-(8/228): adobe-mappings-pdf-20180407-1.el7.noarch.rpm                                                    | 703 kB  00:00:01     
-(9/228): cups-client-1.6.3-40.el7.x86_64.rpm                                                             | 151 kB  00:00:00     
-(10/228): dejavu-fonts-common-2.33-6.el7.noarch.rpm                                                      |  64 kB  00:00:00     
-(11/228): cups-libs-1.6.3-40.el7.x86_64.rpm                                                              | 358 kB  00:00:01     
-(12/228): cairo-1.15.12-4.el7.x86_64.rpm                                                                 | 741 kB  00:00:01     
-(13/228): ed-1.9-4.el7.x86_64.rpm                                                                        |  72 kB  00:00:00     
-(14/228): flac-libs-1.3.0-5.el7_1.x86_64.rpm                                                             | 169 kB  00:00:00     
-(15/228): fontconfig-2.13.0-4.3.el7.x86_64.rpm                                                           | 254 kB  00:00:00     
-(16/228): fontpackages-filesystem-1.44-8.el7.noarch.rpm                                                  | 9.9 kB  00:00:00     
-(17/228): fribidi-1.0.2-1.el7.x86_64.rpm                                                                 |  79 kB  00:00:00     
-warning: /home/yusuke/work/kaltura/enca-1.14-1.el7.x86_64.rpm: Header V4 RSA/SHA1 Signature, key ID 45e53c84: NOKEY00:16:45 ETA 
-enca-1.14-1.el7.x86_64.rpm の公開鍵がインストールされていません
-(18/228): enca-1.14-1.el7.x86_64.rpm                                                                     | 105 kB  00:00:02     
-(19/228): gdk-pixbuf2-2.36.12-3.el7.x86_64.rpm                                                           | 570 kB  00:00:03     
-(20/228): gnutls-3.3.29-9.el7_6.x86_64.rpm                                                               | 680 kB  00:00:03     
-(21/228): graphite2-1.3.10-1.el7_3.x86_64.rpm                                                            | 115 kB  00:00:00     
-(22/228): gsm-1.0.13-11.el7.x86_64.rpm                                                                   |  30 kB  00:00:00     
-(23/228): harfbuzz-1.7.5-2.el7.x86_64.rpm                                                                | 267 kB  00:00:01     
-(24/228): httpd-tools-2.4.6-90.el7.centos.x86_64.rpm                                                     |  91 kB  00:00:00     
-(25/228): ImageMagick-6.7.8.9-18.el7.x86_64.rpm                                                          | 2.1 MB  00:00:12     
-(26/228): ilmbase-1.0.3-7.el7.x86_64.rpm                                                                 | 100 kB  00:00:00     
-(27/228): dejavu-sans-fonts-2.33-6.el7.noarch.rpm                                                        | 1.4 MB  00:00:09     
-(28/228): adobe-mappings-cmap-20171205-3.el7.noarch.rpm                                                  | 2.1 MB  00:00:13     
-(29/228): javapackages-tools-3.4.1-11.el7.noarch.rpm                                                     |  73 kB  00:00:00     
-(30/228): jasper-libs-1.900.1-33.el7.x86_64.rpm                                                          | 150 kB  00:00:01     
-(31/228): jbigkit-libs-2.0-11.el7.x86_64.rpm                                                             |  46 kB  00:00:00     
-(32/228): kaltura-a52dec-0.7.4-11.x86_64.rpm                                                             |  60 kB  00:00:02     
-kaltura-batch-15.8.0-1.noarch.rpm の公開鍵がインストールされていません                        ] 795 kB/s |  15 MB  00:18:46 ETA 
-(33/228): kaltura-batch-15.8.0-1.noarch.rpm                                                              |  28 kB  00:00:02     
-(34/228): httpd-2.4.6-90.el7.centos.x86_64.rpm                                                           | 2.7 MB  00:00:09     
-(35/228): kaltura-clipapp-1.3-2.noarch.rpm                                                               | 103 kB  00:00:02     
-(36/228): java-1.8.0-openjdk-headless-1.8.0.222.b10-1.el7_7.x86_64.rpm                                   |  32 MB  00:01:19     
-(37/228): kaltura-dwh-12.14.0-1.noarch.rpm                                                               |  56 MB  00:03:26     
-(38/228): kaltura-elasticsearch-1.0.0-7.noarch.rpm                                                       | 501 kB  00:00:04     
-(39/228): kaltura-flexwrapper-v1.2-1.noarch.rpm                                                          | 8.0 kB  00:00:00     
-(40/228): kaltura-front-15.8.0-1.noarch.rpm                                                              |  19 kB  00:00:01     
-(41/228): kaltura-html5-analytics-v0.3-2.noarch.rpm                                                      | 1.6 MB  00:00:08     
-(42/228): kaltura-html5-studio-v2.2.1-1.noarch.rpm                                                       | 550 kB  00:00:03     
-(43/228): kaltura-ffmpeg-aux-2.1.3-2.x86_64.rpm                                                          | 4.4 MB  00:00:20     
-(44/228): kaltura-html5-studio3-v3.4.0-1.noarch.rpm                                                      | 561 kB  00:00:06     
-(45/228): kaltura-ffmpeg-4.0.2-1.x86_64.rpm                                                              | 6.8 MB  00:00:43     
-(46/228): kaltura-base-15.8.0-23.noarch.rpm                                                              |  96 MB  00:05:35     
-(47/228): kaltura-html5lib3-0.46.0-1.noarch.rpm                                                          | 2.9 MB  00:00:12     
-(48/228): kaltura-kclip-v1.1.2.1-2.noarch.rpm                                                            | 1.3 MB  00:00:06     
-(49/228): kaltura-kcw-1.0.0-6.noarch.rpm                                                                 |  11 MB  00:00:42     
-(50/228): kaltura-kdp-v2.7.0-1.noarch.rpm                                                                | 1.8 MB  00:00:07     
-(51/228): kaltura-kdp3-v3.9.9-2.noarch.rpm                                                               | 6.0 MB  00:00:16     
-(52/228): kaltura-kdp3wrapper-v37.0-1.noarch.rpm                                                         | 7.7 kB  00:00:00     
-(53/228): kaltura-kdpwrapper-v11.0-1.noarch.rpm                                                          | 7.3 kB  00:00:00     
-(54/228): kaltura-html5lib-v2.78.2-1.noarch.rpm                                                          |  87 MB  00:04:42     
-(55/228): kaltura-kmcng-v5.17.0-1.noarch.rpm                                                             | 1.5 MB  00:00:05     
-(56/228): kaltura-krecord-1.0.0-1.noarch.rpm                                                             | 193 kB  00:00:01     
-(57/228): kaltura-kupload-v1.2.16-2.noarch.rpm                                                           |  98 kB  00:00:01     
-(58/228): kaltura-libfaac-1.28-1.x86_64.rpm                                                              |  77 kB  00:00:02     
-(59/228): kaltura-lame-3.99.5-3.x86_64.rpm                                                               | 449 kB  00:00:03     
-(60/228): kaltura-libmcrypt-2.5.8-2.x86_64.rpm                                                           |  89 kB  00:00:01     
-(61/228): kaltura-libopencore-amr-0.1.3-1.x86_64.rpm                                                     | 144 kB  00:00:01     
-(62/228): kaltura-libvpx-1.7.0-1.x86_64.rpm                                                              | 665 kB  00:00:04     
-(63/228): kaltura-live-analytics-front-v2.7.3-2.noarch.rpm                                               | 665 kB  00:00:05     
-(64/228): kaltura-mediainfo-0.7.61-9.x86_64.rpm                                                          |  53 kB  00:00:01     
-(65/228): kaltura-libmediainfo-0.7.61-8.x86_64.rpm                                                       | 1.6 MB  00:00:09     
-(66/228): kaltura-monit-5.25.3-1.x86_64.rpm                                                              | 315 kB  00:00:04     
-(67/228): kaltura-playkit-bundler-1.1.1-11.noarch.rpm                                                    |  55 kB  00:00:02     
-(68/228): kaltura-postinst-1.0.33-80.noarch.rpm                                                          | 109 kB  00:00:02     
-(69/228): kaltura-nginx-1.16.1-1.x86_64.rpm                                                              | 990 kB  00:00:07     
-(70/228): kaltura-server-15.8.0-1.noarch.rpm                                                             |  15 kB  00:00:01     
-(71/228): kaltura-segmenter-1.0-3.x86_64.rpm                                                             | 2.3 MB  00:00:20     
-(72/228): kaltura-sphinx-2.2.1-21.x86_64.rpm                                                             | 4.9 MB  00:00:26     
-(73/228): kaltura-sshpass-1.05-1.x86_64.rpm                                                              |  19 kB  00:00:00     
-(74/228): lcms2-2.6-3.el7.x86_64.rpm                                                                     | 150 kB  00:00:01     
-(75/228): kaltura-widgets-1.0.0-9.noarch.rpm                                                             | 4.0 kB  00:00:02     
-(76/228): libICE-1.0.9-9.el7.x86_64.rpm                                                                  |  66 kB  00:00:00     
-(77/228): libSM-1.2.2-2.el7.x86_64.rpm                                                                   |  39 kB  00:00:00     
-(78/228): libX11-common-1.6.7-2.el7.noarch.rpm                                                           | 164 kB  00:00:01     
-(79/228): libXau-1.0.8-2.1.el7.x86_64.rpm                                                                |  29 kB  00:00:00     
-(80/228): libX11-1.6.7-2.el7.x86_64.rpm                                                                  | 607 kB  00:00:01     
-(81/228): libXcursor-1.1.15-1.el7.x86_64.rpm                                                             |  30 kB  00:00:00     
-(82/228): libXdamage-1.1.4-4.1.el7.x86_64.rpm                                                            |  20 kB  00:00:00     
-(83/228): libXext-1.3.3-3.el7.x86_64.rpm                                                                 |  39 kB  00:00:00     
-(84/228): libXfixes-5.0.3-1.el7.x86_64.rpm                                                               |  18 kB  00:00:00     
-(85/228): libXft-2.3.2-2.el7.x86_64.rpm                                                                  |  58 kB  00:00:00     
-(86/228): libXinerama-1.1.3-2.1.el7.x86_64.rpm                                                           |  14 kB  00:00:00     
-(87/228): libXmu-1.1.2-2.el7.x86_64.rpm                                                                  |  71 kB  00:00:00     
-(88/228): libXi-1.7.9-1.el7.x86_64.rpm                                                                   |  40 kB  00:00:00     
-(89/228): libXrandr-1.5.1-2.el7.x86_64.rpm                                                               |  27 kB  00:00:00     
-(90/228): libXpm-3.5.12-1.el7.x86_64.rpm                                                                 |  55 kB  00:00:00     
-(91/228): libXrender-0.9.10-1.el7.x86_64.rpm                                                             |  26 kB  00:00:00     
-(92/228): kaltura-x264-0.140-2.20140104.x86_64.rpm                                                       | 482 kB  00:00:05     
-(93/228): libXt-1.1.5-3.el7.x86_64.rpm                                                                   | 173 kB  00:00:00     
-(94/228): libXtst-1.2.3-1.el7.x86_64.rpm                                                                 |  20 kB  00:00:00     
-(95/228): libXxf86vm-1.1.4-1.el7.x86_64.rpm                                                              |  18 kB  00:00:00     
-(96/228): libao-1.1.0-8.el7.x86_64.rpm                                                                   |  72 kB  00:00:00     
-(97/228): libXxf86misc-1.0.3-7.1.el7.x86_64.rpm                                                          |  19 kB  00:00:00     
-(98/228): libasyncns-0.8-7.el7.x86_64.rpm                                                                |  26 kB  00:00:00     
-(99/228): libfontenc-1.1.3-3.el7.x86_64.rpm                                                              |  31 kB  00:00:00     
-(100/228): libevent-2.0.21-4.el7.x86_64.rpm                                                              | 214 kB  00:00:00     
-(101/228): libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm                                              |  44 kB  00:00:00     
-(102/228): libass-0.10.2-2.el7.x86_64.rpm                                                                |  66 kB  00:00:01     
-(103/228): libglvnd-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm                                                  |  89 kB  00:00:00     
-(104/228): libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm                                              | 125 kB  00:00:00     
-(105/228): libjpeg-turbo-1.2.90-8.el7.x86_64.rpm                                                         | 135 kB  00:00:00     
-(106/228): libpaper-1.1.24-8.el7.x86_64.rpm                                                              |  37 kB  00:00:00     
-(107/228): libogg-1.3.0-7.el7.x86_64.rpm                                                                 |  24 kB  00:00:00     
-(108/228): librdkafka-0.11.4-1.el7.x86_64.rpm                                                            | 337 kB  00:00:01     
-(109/228): librsvg2-2.40.20-1.el7.x86_64.rpm                                                             | 132 kB  00:00:01     
-(110/228): libsndfile-1.0.25-10.el7.x86_64.rpm                                                           | 149 kB  00:00:00     
-(111/228): libthai-0.1.14-9.el7.x86_64.rpm                                                               | 187 kB  00:00:01     
-(112/228): librtmp-2.4-2.20131205.gitdc76f0a.el7.nux.x86_64.rpm                                          |  68 kB  00:00:03     
-(113/228): libtheora-1.1.1-8.el7.x86_64.rpm                                                              | 136 kB  00:00:00     
-(114/228): libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm                                                        |  49 kB  00:00:00     
-(115/228): libvdpau-1.1.1-3.el7.x86_64.rpm                                                               |  34 kB  00:00:00     
-(116/228): libtiff-4.0.3-32.el7.x86_64.rpm                                                               | 171 kB  00:00:01     
-(117/228): libvorbis-1.3.3-8.el7.1.x86_64.rpm                                                            | 204 kB  00:00:01     
-(118/228): libwayland-client-1.15.0-1.el7.x86_64.rpm                                                     |  33 kB  00:00:00     
-(119/228): libwayland-server-1.15.0-1.el7.x86_64.rpm                                                     |  39 kB  00:00:00     
-(120/228): libwmf-lite-0.2.8.4-41.el7_1.x86_64.rpm                                                       |  66 kB  00:00:00     
-(121/228): libvpx-1.3.0-5.el7_0.x86_64.rpm                                                               | 498 kB  00:00:03     
-(122/228): libxcb-1.13-1.el7.x86_64.rpm                                                                  | 214 kB  00:00:00     
-(123/228): libxshmfence-1.2-1.el7.x86_64.rpm                                                             | 7.2 kB  00:00:00     
-(124/228): libxslt-1.1.28-5.el7.x86_64.rpm                                                               | 242 kB  00:00:01     
-(125/228): libx264-142-alt1.x86_64.rpm                                                                   | 412 kB  00:00:07     
-(126/228): libxvidcore4-1.3.5-1.x86_64.rpm                                                               | 262 kB  00:00:05     
-(127/228): libzip-0.10.1-8.el7.x86_64.rpm                                                                |  48 kB  00:00:00     
-(128/228): lksctp-tools-1.0.17-2.el7.x86_64.rpm                                                          |  88 kB  00:00:00     
-(129/228): libgs-9.25-2.el7_7.2.x86_64.rpm                                                               | 4.6 MB  00:00:22     
-(130/228): mailcap-2.1.41-2.el7.noarch.rpm                                                               |  31 kB  00:00:00     
-(131/228): libzen-0.4.37-1.el7.x86_64.rpm                                                                | 108 kB  00:00:02     
-(132/228): m4-1.4.16-10.el7.x86_64.rpm                                                                   | 256 kB  00:00:02     
-(133/228): mailx-12.5-19.el7.x86_64.rpm                                                                  | 245 kB  00:00:01     
-(134/228): memcached-1.4.15-10.el7_3.1.x86_64.rpm                                                        |  85 kB  00:00:01     
-(135/228): mesa-libgbm-18.3.4-5.el7.x86_64.rpm                                                           |  39 kB  00:00:00     
-(136/228): mesa-libglapi-18.3.4-5.el7.x86_64.rpm                                                         |  45 kB  00:00:00     
-(137/228): mesa-libEGL-18.3.4-5.el7.x86_64.rpm                                                           | 109 kB  00:00:00     
-(138/228): mesa-libGL-18.3.4-5.el7.x86_64.rpm                                                            | 165 kB  00:00:00     
-(139/228): mod_ssl-2.4.6-90.el7.centos.x86_64.rpm                                                        | 112 kB  00:00:00     
-warning: /home/yusuke/work/kaltura/mysql-community-common-8.0.18-1.el7.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
-mysql-community-common-8.0.18-1.el7.x86_64.rpm の公開鍵がインストールされていません
-(140/228): mysql-community-common-8.0.18-1.el7.x86_64.rpm                                                | 597 kB  00:00:04     
-(141/228): mysql-community-libs-8.0.18-1.el7.x86_64.rpm                                                  | 3.7 MB  00:00:17     
-(142/228): nettle-2.7.1-8.el7.x86_64.rpm                                                                 | 327 kB  00:00:02     
-(143/228): mysql-community-libs-compat-8.0.18-1.el7.x86_64.rpm                                           | 1.3 MB  00:00:08     
-(144/228): openjpeg-libs-1.5.1-18.el7.x86_64.rpm                                                         |  86 kB  00:00:00     
-(145/228): openjpeg2-2.3.1-1.el7.x86_64.rpm                                                              | 153 kB  00:00:00     
-(146/228): orc-0.4.26-1.el7.x86_64.rpm                                                                   | 166 kB  00:00:01     
-(147/228): pango-1.42.4-4.el7_7.x86_64.rpm                                                               | 280 kB  00:00:01     
-(148/228): patch-2.7.1-11.el7.x86_64.rpm                                                                 | 110 kB  00:00:01     
-(149/228): pcsc-lite-libs-1.8.8-8.el7.x86_64.rpm                                                         |  34 kB  00:00:00     
-(150/228): perl-5.16.3-294.el7_6.x86_64.rpm                                                              | 8.0 MB  00:00:49     
-(151/228): perl-Carp-1.26-244.el7.noarch.rpm                                                             |  19 kB  00:00:00     
-(152/228): perl-Encode-2.51-7.el7.x86_64.rpm                                                             | 1.5 MB  00:00:06     
-(153/228): perl-Exporter-5.68-3.el7.noarch.rpm                                                           |  28 kB  00:00:00     
-(154/228): perl-File-Path-2.09-2.el7.noarch.rpm                                                          |  26 kB  00:00:00     
-(155/228): perl-File-Temp-0.23.01-3.el7.noarch.rpm                                                       |  56 kB  00:00:00     
-(156/228): perl-Filter-1.49-3.el7.x86_64.rpm                                                             |  76 kB  00:00:00     
-(157/228): perl-Getopt-Long-2.40-3.el7.noarch.rpm                                                        |  56 kB  00:00:00     
-(158/228): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm                                                         |  38 kB  00:00:00     
-(159/228): perl-PathTools-3.40-5.el7.x86_64.rpm                                                          |  82 kB  00:00:00     
-(160/228): perl-Pod-Escapes-1.04-294.el7_6.noarch.rpm                                                    |  51 kB  00:00:00     
-(161/228): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm                                                        |  87 kB  00:00:00     
-(162/228): perl-Pod-Simple-3.28-4.el7.noarch.rpm                                                         | 216 kB  00:00:00     
-(163/228): perl-Pod-Usage-1.63-3.el7.noarch.rpm                                                          |  27 kB  00:00:00     
-(164/228): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm                                                |  36 kB  00:00:00     
-(165/228): perl-Socket-2.010-4.el7.x86_64.rpm                                                            |  49 kB  00:00:04     
-(166/228): perl-Storable-2.45-3.el7.x86_64.rpm                                                           |  77 kB  00:00:00     
-(167/228): perl-Text-ParseWords-3.29-4.el7.noarch.rpm                                                    |  14 kB  00:00:00     
-(168/228): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm                                                       |  45 kB  00:00:00     
-(169/228): perl-Time-Local-1.2300-2.el7.noarch.rpm                                                       |  24 kB  00:00:00     
-(170/228): perl-constant-1.27-2.el7.noarch.rpm                                                           |  19 kB  00:00:00     
-(171/228): perl-libs-5.16.3-294.el7_6.x86_64.rpm                                                         | 688 kB  00:00:04     
-(172/228): perl-macros-5.16.3-294.el7_6.x86_64.rpm                                                       |  44 kB  00:00:00     
-(173/228): perl-parent-0.225-244.el7.noarch.rpm                                                          |  12 kB  00:00:00     
-(174/228): perl-podlators-2.5.1-3.el7.noarch.rpm                                                         | 112 kB  00:00:00     
-(175/228): perl-threads-1.87-4.el7.x86_64.rpm                                                            |  49 kB  00:00:00     
-(176/228): perl-threads-shared-1.43-6.el7.x86_64.rpm                                                     |  39 kB  00:00:00     
-(177/228): php-5.4.16-46.el7.x86_64.rpm                                                                  | 1.4 MB  00:00:06     
-(178/228): php-cli-5.4.16-46.el7.x86_64.rpm                                                              | 2.7 MB  00:00:13     
-(179/228): php-common-5.4.16-46.el7.x86_64.rpm                                                           | 565 kB  00:00:03     
-(180/228): php-gd-5.4.16-46.el7.x86_64.rpm                                                               | 128 kB  00:00:01     
-(181/228): php-ldap-5.4.16-46.el7.x86_64.rpm                                                             |  53 kB  00:00:00     
-(182/228): php-mbstring-5.4.16-46.el7.x86_64.rpm                                                         | 505 kB  00:00:02     
-(183/228): nodejs-9.11.2-1nodesource.x86_64.rpm                                                          |  17 MB  00:02:06     
-(184/228): php-mysql-5.4.16-46.el7.x86_64.rpm                                                            | 101 kB  00:00:00     
-(185/228): php-pdo-5.4.16-46.el7.x86_64.rpm                                                              |  99 kB  00:00:00     
-(186/228): php-mcrypt-5.4.35-1.x86_64.rpm                                                                |  17 kB  00:00:01     
-(187/228): php-pear-1.9.4-21.el7.noarch.rpm                                                              | 357 kB  00:00:01     
-(188/228): php-pecl-memcache-3.0.8-4.el7.x86_64.rpm                                                      |  67 kB  00:00:00     
-(189/228): php-pecl-apc-3.1.13-1.x86_64.rpm                                                              |  67 kB  00:00:02     
-(190/228): php-process-5.4.16-46.el7.x86_64.rpm                                                          |  56 kB  00:00:00     
-(191/228): php-xml-5.4.16-46.el7.x86_64.rpm                                                              | 126 kB  00:00:00     
-(192/228): pixman-0.34.0-1.el7.x86_64.rpm                                                                | 248 kB  00:00:00     
-(193/228): php-pecl-ssh2-0.12-1.x86_64.rpm                                                               |  31 kB  00:00:02     
-(194/228): psmisc-22.20-16.el7.x86_64.rpm                                                                | 141 kB  00:00:00     
-(195/228): python-javapackages-3.4.1-11.el7.noarch.rpm                                                   |  31 kB  00:00:00     
-(196/228): python-lxml-3.2.1-4.el7.x86_64.rpm                                                            | 758 kB  00:00:02     
-(197/228): redhat-lsb-core-4.1-27.el7.centos.1.x86_64.rpm                                                |  38 kB  00:00:00     
-(198/228): redhat-lsb-submod-security-4.1-27.el7.centos.1.x86_64.rpm                                     |  15 kB  00:00:00     
-(199/228): pulseaudio-libs-10.0-5.el7.x86_64.rpm                                                         | 651 kB  00:00:04     
-(200/228): rsync-3.1.2-6.el7_6.1.x86_64.rpm                                                              | 404 kB  00:00:01     
-(201/228): sox-14.4.1-7.el7.x86_64.rpm                                                                   | 398 kB  00:00:01     
-(202/228): mysql-community-client-8.0.18-1.el7.x86_64.rpm                                                |  38 MB  00:02:44     
-(203/228): spax-1.5.2-13.el7.x86_64.rpm                                                                  | 260 kB  00:00:00     
-(204/228): speex-1.2-0.19.rc1.el7.x86_64.rpm                                                             |  98 kB  00:00:00     
-(205/228): t1lib-5.1.2-14.el7.x86_64.rpm                                                                 | 166 kB  00:00:00     
-(206/228): time-1.7-45.el7.x86_64.rpm                                                                    |  30 kB  00:00:00     
-(207/228): schroedinger-1.0.11-4.el7.x86_64.rpm                                                          | 290 kB  00:00:04     
-(208/228): unzip-6.0-20.el7.x86_64.rpm                                                                   | 170 kB  00:00:00     
-(209/228): trousers-0.3.14-2.el7.x86_64.rpm                                                              | 289 kB  00:00:02     
-(210/228): tzdata-java-2019c-1.el7.noarch.rpm                                                            | 187 kB  00:00:02     
-(211/228): urw-base35-d050000l-fonts-20170801-10.el7.noarch.rpm                                          |  75 kB  00:00:00     
-(212/228): urw-base35-fonts-20170801-10.el7.noarch.rpm                                                   | 7.6 kB  00:00:00     
-(213/228): urw-base35-fonts-common-20170801-10.el7.noarch.rpm                                            |  19 kB  00:00:00     
-(214/228): urw-base35-c059-fonts-20170801-10.el7.noarch.rpm                                              | 879 kB  00:00:03     
-(215/228): urw-base35-bookman-fonts-20170801-10.el7.noarch.rpm                                           | 852 kB  00:00:07     
-(216/228): urw-base35-nimbus-mono-ps-fonts-20170801-10.el7.noarch.rpm                                    | 796 kB  00:00:02     
-(217/228): urw-base35-gothic-fonts-20170801-10.el7.noarch.rpm                                            | 650 kB  00:00:04     
-(218/228): urw-base35-nimbus-sans-fonts-20170801-10.el7.noarch.rpm                                       | 1.3 MB  00:00:06     
-(219/228): urw-base35-standard-symbols-ps-fonts-20170801-10.el7.noarch.rpm                               |  40 kB  00:00:00     
-(220/228): urw-base35-z003-fonts-20170801-10.el7.noarch.rpm                                              | 275 kB  00:00:02     
-(221/228): wavpack-4.60.1-9.el7.x86_64.rpm                                                               | 131 kB  00:00:00     
-(222/228): urw-base35-nimbus-roman-fonts-20170801-10.el7.noarch.rpm                                      | 860 kB  00:00:10     
-(223/228): xorg-x11-font-utils-7.5-21.el7.x86_64.rpm                                                     | 104 kB  00:00:00     
-(224/228): urw-base35-p052-fonts-20170801-10.el7.noarch.rpm                                              | 978 kB  00:00:10     
-(225/228): xorg-x11-server-utils-7.7-20.el7.x86_64.rpm                                                   | 178 kB  00:00:01     
-(226/228): x265-libs-2.6-1.x86_64.rpm                                                                    | 1.6 MB  00:00:17     
-(227/228): kaltura-kmc-v5.43.13-28.noarch.rpm                                                            | 216 MB  00:19:01     
-(228/228): kaltura-pentaho-4.2.1-2.x86_64.rpm                                                            | 231 MB  00:17:38     
---------------------------------------------------------------------------------------------------------------------------------
-合計                                                                                            563 kB/s | 889 MB  00:26:56     
-exiting because "Download Only" specified
+警告: /home/yusuke/kaltura/OpenEXR-libs-1.7.1-7.el7.x86_64.rpm: ヘッダー V3 RSA/SHA256 Signature、鍵 ID f4a80eb5: NOKEY
+OpenEXR-libs-1.7.1-7.el7.x86_64.rpm の公開鍵がインストールされていません
+(1/236): OpenEXR-libs-1.7.1-7.el7.x86_64.rpm               | 217 kB   00:01     
+(2/236): SDL-1.2.15-14.el7.x86_64.rpm                      | 204 kB   00:00     
+(3/236): ImageMagick-6.7.8.9-18.el7.x86_64.rpm             | 2.1 MB   00:02     
+(4/236): apr-util-1.5.2-6.el7.x86_64.rpm                   |  92 kB   00:00     
+(5/236): apr-1.4.8-5.el7.x86_64.rpm                        | 103 kB   00:00     
+(6/236): at-3.1.13-24.el7.x86_64.rpm                       |  51 kB   00:00     
+(7/236): adobe-mappings-cmap-deprecated-20171205-3.el7.noa | 114 kB   00:00     
+(8/236): atk-2.28.1-1.el7.x86_64.rpm                       | 263 kB   00:00     
+(9/236): bc-1.06.95-13.el7.x86_64.rpm                      | 115 kB   00:00     
+(10/236): avahi-libs-0.6.31-19.el7.x86_64.rpm              |  61 kB   00:00     
+(11/236): copy-jdk-configs-3.3-10.el7_5.noarch.rpm         |  21 kB   00:00     
+(12/236): adobe-mappings-pdf-20180407-1.el7.noarch.rpm     | 703 kB   00:01     
+(13/236): dejavu-fonts-common-2.33-6.el7.noarch.rpm        |  64 kB   00:00     
+(14/236): cups-client-1.6.3-40.el7.x86_64.rpm              | 151 kB   00:00     
+(15/236): cairo-1.15.12-4.el7.x86_64.rpm                   | 741 kB   00:00     
+(16/236): ed-1.9-4.el7.x86_64.rpm                          |  72 kB   00:00     
+(17/236): cups-libs-1.6.3-40.el7.x86_64.rpm                | 358 kB   00:00     
+(18/236): dejavu-sans-fonts-2.33-6.el7.noarch.rpm          | 1.4 MB   00:00     
+(19/236): fontpackages-filesystem-1.44-8.el7.noarch.rpm    | 9.9 kB   00:00     
+(20/236): fribidi-1.0.2-1.el7.x86_64.rpm                   |  79 kB   00:00     
+(21/236): flac-libs-1.3.0-5.el7_1.x86_64.rpm               | 169 kB   00:00     
+(22/236): giflib-4.1.6-9.el7.x86_64.rpm                    |  40 kB   00:00     
+(23/236): fontconfig-2.13.0-4.3.el7.x86_64.rpm             | 254 kB   00:00     
+(24/236): graphite2-1.3.10-1.el7_3.x86_64.rpm              | 115 kB   00:00     
+(25/236): gsm-1.0.13-11.el7.x86_64.rpm                     |  30 kB   00:00     
+(26/236): gtk-update-icon-cache-3.22.30-3.el7.x86_64.rpm   |  28 kB   00:00     
+(27/236): adobe-mappings-cmap-20171205-3.el7.noarch.rpm    | 2.1 MB   00:03     
+(28/236): harfbuzz-1.7.5-2.el7.x86_64.rpm                  | 267 kB   00:00     
+(29/236): hicolor-icon-theme-0.12-7.el7.noarch.rpm         |  42 kB   00:00     
+(30/236): gnutls-3.3.29-9.el7_6.x86_64.rpm                 | 680 kB   00:02     
+(31/236): httpd-2.4.6-90.el7.centos.x86_64.rpm             | 2.7 MB   00:01     
+(32/236): httpd-tools-2.4.6-90.el7.centos.x86_64.rpm       |  91 kB   00:01     
+java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64.rpm の公開鍵がインストールされていません
+(33/236): java-1.8.0-openjdk-1.8.0.222.b10-1.el7_7.x86_64. | 288 kB   00:00     
+(34/236): ilmbase-1.0.3-7.el7.x86_64.rpm                   | 100 kB   00:02     
+(35/236): gdk-pixbuf2-2.36.12-3.el7.x86_64.rpm             | 570 kB   00:06     
+(36/236): javapackages-tools-3.4.1-11.el7.noarch.rpm       |  73 kB   00:01     
+(37/236): jbigkit-libs-2.0-11.el7.x86_64.rpm               |  46 kB   00:00     
+(38/236): jasper-libs-1.900.1-33.el7.x86_64.rpm            | 150 kB   00:04     
+(39/236): gtk2-2.24.31-1.el7.x86_64.rpm                    | 3.4 MB   00:07     
+警告: /home/yusuke/kaltura/kaltura-a52dec-0.7.4-11.x86_64.rpm: ヘッダー V4 RSA/SHA1 Signature、鍵 ID 45e53c84: NOKEY
+kaltura-a52dec-0.7.4-11.x86_64.rpm の公開鍵がインストールされていません
+(40/236): kaltura-a52dec-0.7.4-11.x86_64.rpm               |  60 kB   00:01     
+kaltura-batch-15.8.0-1.noarch.rpm の公開鍵がインストールされていません03:56 ETA 
+(41/236): kaltura-batch-15.8.0-1.noarch.rpm                |  28 kB   00:01     
+(42/236): kaltura-clipapp-1.3-2.noarch.rpm                 | 103 kB   00:01     
+(43/236): java-1.8.0-openjdk-headless-1.8.0.222.b10-1.el7_ |  32 MB   00:18     
+(44/236): kaltura-dwh-12.14.0-1.noarch.rpm                 |  56 MB   00:21     
+(45/236): kaltura-base-15.8.0-23.noarch.rpm                |  96 MB   00:26     
+(46/236): kaltura-elasticsearch-1.0.0-7.noarch.rpm         | 501 kB   00:02     
+(47/236): kaltura-flexwrapper-v1.2-1.noarch.rpm            | 8.0 kB   00:00     
+(48/236): kaltura-front-15.8.0-1.noarch.rpm                |  19 kB   00:00     
+(49/236): kaltura-ffmpeg-aux-2.1.3-2.x86_64.rpm            | 4.4 MB   00:03     
+(50/236): kaltura-ffmpeg-4.0.2-1.x86_64.rpm                | 6.8 MB   00:03     
+(51/236): kaltura-html5-studio-v2.2.1-1.noarch.rpm         | 550 kB   00:01     
+(52/236): kaltura-html5-analytics-v0.3-2.noarch.rpm        | 1.6 MB   00:02     
+(53/236): kaltura-html5-studio3-v3.4.0-1.noarch.rpm        | 561 kB   00:01     
+(54/236): kaltura-html5lib3-0.46.0-1.noarch.rpm            | 2.9 MB   00:03     
+(55/236): kaltura-kclip-v1.1.2.1-2.noarch.rpm              | 1.3 MB   00:02     
+(56/236): kaltura-kcw-1.0.0-6.noarch.rpm                   |  11 MB   00:05     
+(57/236): kaltura-kdp-v2.7.0-1.noarch.rpm                  | 1.8 MB   00:03     
+(58/236): kaltura-html5lib-v2.78.2-1.noarch.rpm            |  87 MB   00:18     
+(59/236): kaltura-kdp3-v3.9.9-2.noarch.rpm                 | 6.0 MB   00:02     
+(60/236): kaltura-kdp3wrapper-v37.0-1.noarch.rpm           | 7.7 kB   00:00     
+(61/236): kaltura-kdpwrapper-v11.0-1.noarch.rpm            | 7.3 kB   00:00     
+(62/236): kaltura-kmcng-v5.17.0-1.noarch.rpm               | 1.5 MB   00:02     
+(63/236): kaltura-krecord-1.0.0-1.noarch.rpm               | 193 kB   00:02     
+(64/236): kaltura-kupload-v1.2.16-2.noarch.rpm             |  98 kB   00:01     
+(65/236): kaltura-libfaac-1.28-1.x86_64.rpm                |  77 kB   00:01     
+(66/236): kaltura-lame-3.99.5-3.x86_64.rpm                 | 449 kB   00:03     
+(67/236): kaltura-libopencore-amr-0.1.3-1.x86_64.rpm       | 144 kB   00:01     
+(68/236): kaltura-libmediainfo-0.7.61-8.x86_64.rpm         | 1.6 MB   00:02     
+(69/236): kaltura-mediainfo-0.7.61-9.x86_64.rpm            |  53 kB   00:01     
+(70/236): kaltura-libvpx-1.7.0-1.x86_64.rpm                | 665 kB   00:02     
+(71/236): kaltura-live-analytics-front-v2.7.3-2.noarch.rpm | 665 kB   00:03     
+(72/236): kaltura-monit-5.25.3-1.x86_64.rpm                | 315 kB   00:01     
+(73/236): kaltura-nginx-1.16.1-1.x86_64.rpm                | 990 kB   00:02     
+(74/236): kaltura-playkit-bundler-1.1.1-11.noarch.rpm      |  55 kB   00:02     
+(75/236): kaltura-postinst-1.0.33-80.noarch.rpm            | 109 kB   00:04     
+(76/236): kaltura-server-15.8.0-1.noarch.rpm               |  15 kB   00:02     
+(77/236): kaltura-segmenter-1.0-3.x86_64.rpm               | 2.3 MB   00:08     
+(78/236): kaltura-sphinx-2.2.1-21.x86_64.rpm               | 4.9 MB   00:15     
+(79/236): kaltura-sshpass-1.05-1.x86_64.rpm                |  19 kB   00:02     
+(80/236): kaltura-widgets-1.0.0-9.noarch.rpm               | 4.0 kB   00:04     
+(81/236): lcms2-2.6-3.el7.x86_64.rpm                       | 150 kB   00:02     
+(82/236): libSM-1.2.2-2.el7.x86_64.rpm                     |  39 kB   00:00     
+(83/236): libICE-1.0.9-9.el7.x86_64.rpm                    |  66 kB   00:02     
+(84/236): libX11-1.6.7-2.el7.x86_64.rpm                    | 607 kB   00:03     
+(85/236): kaltura-x264-0.140-2.20140104.x86_64.rpm         | 482 kB   00:06     
+(86/236): libXau-1.0.8-2.1.el7.x86_64.rpm                  |  29 kB   00:00     
+(87/236): libXcursor-1.1.15-1.el7.x86_64.rpm               |  30 kB   00:00     
+(88/236): libXdamage-1.1.4-4.1.el7.x86_64.rpm              |  20 kB   00:00     
+(89/236): libXext-1.3.3-3.el7.x86_64.rpm                   |  39 kB   00:00     
+(90/236): libXcomposite-0.4.4-4.1.el7.x86_64.rpm           |  22 kB   00:01     
+(91/236): libXfixes-5.0.3-1.el7.x86_64.rpm                 |  18 kB   00:00     
+(92/236): libX11-common-1.6.7-2.el7.noarch.rpm             | 164 kB   00:04     
+(93/236): libXi-1.7.9-1.el7.x86_64.rpm                     |  40 kB   00:00     
+(94/236): libXft-2.3.2-2.el7.x86_64.rpm                    |  58 kB   00:01     
+(95/236): libXmu-1.1.2-2.el7.x86_64.rpm                    |  71 kB   00:00     
+(96/236): libXinerama-1.1.3-2.1.el7.x86_64.rpm             |  14 kB   00:01     
+(97/236): kaltura-kmc-v5.43.13-28.noarch.rpm               | 216 MB   00:56     
+(98/236): libXrandr-1.5.1-2.el7.x86_64.rpm                 |  27 kB   00:05     
+(99/236): libXrender-0.9.10-1.el7.x86_64.rpm               |  26 kB   00:05     
+(100/236): libXpm-3.5.12-1.el7.x86_64.rpm                  |  55 kB   00:05     
+(101/236): libXtst-1.2.3-1.el7.x86_64.rpm                  |  20 kB   00:00     
+(102/236): libao-1.1.0-8.el7.x86_64.rpm                    |  72 kB   00:00     
+(103/236): libXxf86misc-1.0.3-7.1.el7.x86_64.rpm           |  19 kB   00:00     
+(104/236): libXxf86vm-1.1.4-1.el7.x86_64.rpm               |  18 kB   00:00     
+(105/236): libasyncns-0.8-7.el7.x86_64.rpm                 |  26 kB   00:00     
+(106/236): libfontenc-1.1.3-3.el7.x86_64.rpm               |  31 kB   00:00     
+(107/236): libglvnd-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm    |  89 kB   00:00     
+(108/236): libevent-2.0.21-4.el7.x86_64.rpm                | 214 kB   00:00     
+(109/236): libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64.rp |  44 kB   00:00     
+警告: /home/yusuke/kaltura/libass-0.13.4-6.el7.x86_64.rpm: ヘッダー V3 RSA/SHA256 Signature、鍵 ID 352c64e5: NOKEY
+libass-0.13.4-6.el7.x86_64.rpm の公開鍵がインストールされていません
+(110/236): libass-0.13.4-6.el7.x86_64.rpm                  |  99 kB   00:01     
+(111/236): libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64.rp | 125 kB   00:01     
+(112/236): libjpeg-turbo-1.2.90-8.el7.x86_64.rpm           | 135 kB   00:00     
+(113/236): libogg-1.3.0-7.el7.x86_64.rpm                   |  24 kB   00:00     
+(114/236): libXt-1.1.5-3.el7.x86_64.rpm                    | 173 kB   00:03     
+(115/236): libpaper-1.1.24-8.el7.x86_64.rpm                |  37 kB   00:00     
+(116/236): libmcrypt-2.5.8-13.el7.x86_64.rpm               |  99 kB   00:01     
+(117/236): librsvg2-2.40.20-1.el7.x86_64.rpm               | 132 kB   00:00     
+(118/236): libsndfile-1.0.25-10.el7.x86_64.rpm             | 149 kB   00:00     
+(119/236): libthai-0.1.14-9.el7.x86_64.rpm                 | 187 kB   00:00     
+(120/236): libtheora-1.1.1-8.el7.x86_64.rpm                | 136 kB   00:00     
+(121/236): libtiff-4.0.3-32.el7.x86_64.rpm                 | 171 kB   00:00     
+(122/236): libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm          |  49 kB   00:00     
+(123/236): libvdpau-1.1.1-3.el7.x86_64.rpm                 |  34 kB   00:00     
+(124/236): librtmp-2.4-2.20131205.gitdc76f0a.el7.nux.x86_6 |  68 kB   00:02     
+(125/236): libvorbis-1.3.3-8.el7.1.x86_64.rpm              | 204 kB   00:00     
+(126/236): libwayland-client-1.15.0-1.el7.x86_64.rpm       |  33 kB   00:00     
+(127/236): libwayland-server-1.15.0-1.el7.x86_64.rpm       |  39 kB   00:00     
+(128/236): libwmf-lite-0.2.8.4-41.el7_1.x86_64.rpm         |  66 kB   00:00     
+(129/236): kaltura-pentaho-4.2.1-2.x86_64.rpm              | 231 MB   00:55     
+(130/236): libvpx-1.3.0-5.el7_0.x86_64.rpm                 | 498 kB   00:05     
+(131/236): libgs-9.25-2.el7_7.2.x86_64.rpm                 | 4.6 MB   00:09     
+(132/236): librdkafka-0.11.5-1.el7.x86_64.rpm              | 368 kB   00:08     
+(133/236): libx264-142-alt1.x86_64.rpm                     | 412 kB   00:03     
+(134/236): libxcb-1.13-1.el7.x86_64.rpm                    | 214 kB   00:00     
+(135/236): libxshmfence-1.2-1.el7.x86_64.rpm               | 7.2 kB   00:00     
+(136/236): libzip-0.10.1-8.el7.x86_64.rpm                  |  48 kB   00:00     
+(137/236): m4-1.4.16-10.el7.x86_64.rpm                     | 256 kB   00:00     
+(138/236): lksctp-tools-1.0.17-2.el7.x86_64.rpm            |  88 kB   00:00     
+(139/236): mailcap-2.1.41-2.el7.noarch.rpm                 |  31 kB   00:00     
+(140/236): mailx-12.5-19.el7.x86_64.rpm                    | 245 kB   00:00     
+(141/236): libxslt-1.1.28-5.el7.x86_64.rpm                 | 242 kB   00:01     
+(142/236): libxvidcore4-1.3.5-1.x86_64.rpm                 | 262 kB   00:01     
+(143/236): mariadb-5.5.64-1.el7.x86_64.rpm                 | 8.7 MB   00:01     
+(144/236): memcached-1.4.15-10.el7_3.1.x86_64.rpm          |  85 kB   00:00     
+(145/236): libzen-0.4.37-1.el7.x86_64.rpm                  | 108 kB   00:01     
+(146/236): mesa-libgbm-18.3.4-5.el7.x86_64.rpm             |  39 kB   00:00     
+(147/236): mesa-libEGL-18.3.4-5.el7.x86_64.rpm             | 109 kB   00:00     
+(148/236): mod_ssl-2.4.6-90.el7.centos.x86_64.rpm          | 112 kB   00:00     
+(149/236): openjpeg-libs-1.5.1-18.el7.x86_64.rpm           |  86 kB   00:00     
+(150/236): openjpeg2-2.3.1-1.el7.x86_64.rpm                | 153 kB   00:00     
+(151/236): orc-0.4.26-1.el7.x86_64.rpm                     | 166 kB   00:00     
+(152/236): nettle-2.7.1-8.el7.x86_64.rpm                   | 327 kB   00:00     
+(153/236): mesa-libglapi-18.3.4-5.el7.x86_64.rpm           |  45 kB   00:00     
+(154/236): patch-2.7.1-11.el7.x86_64.rpm                   | 110 kB   00:00     
+(155/236): pcsc-lite-libs-1.8.8-8.el7.x86_64.rpm           |  34 kB   00:00     
+(156/236): perl-Carp-1.26-244.el7.noarch.rpm               |  19 kB   00:00     
+(157/236): perl-Encode-2.51-7.el7.x86_64.rpm               | 1.5 MB   00:01     
+(158/236): perl-Exporter-5.68-3.el7.noarch.rpm             |  28 kB   00:00     
+(159/236): perl-5.16.3-294.el7_6.x86_64.rpm                | 8.0 MB   00:01     
+(160/236): perl-File-Path-2.09-2.el7.noarch.rpm            |  26 kB   00:00     
+(161/236): pango-1.42.4-4.el7_7.x86_64.rpm                 | 280 kB   00:01     
+(162/236): perl-File-Temp-0.23.01-3.el7.noarch.rpm         |  56 kB   00:00     
+(163/236): perl-Filter-1.49-3.el7.x86_64.rpm               |  76 kB   00:00     
+(164/236): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm           |  38 kB   00:00     
+(165/236): perl-Pod-Escapes-1.04-294.el7_6.noarch.rpm      |  51 kB   00:00     
+(166/236): perl-PathTools-3.40-5.el7.x86_64.rpm            |  82 kB   00:00     
+(167/236): perl-Getopt-Long-2.40-3.el7.noarch.rpm          |  56 kB   00:00     
+(168/236): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm          |  87 kB   00:00     
+(169/236): perl-Pod-Usage-1.63-3.el7.noarch.rpm            |  27 kB   00:00     
+(170/236): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm  |  36 kB   00:00     
+(171/236): perl-Pod-Simple-3.28-4.el7.noarch.rpm           | 216 kB   00:00     
+(172/236): perl-Storable-2.45-3.el7.x86_64.rpm             |  77 kB   00:00     
+(173/236): perl-Socket-2.010-4.el7.x86_64.rpm              |  49 kB   00:00     
+(174/236): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm         |  45 kB   00:00     
+(175/236): perl-constant-1.27-2.el7.noarch.rpm             |  19 kB   00:00     
+(176/236): perl-Time-Local-1.2300-2.el7.noarch.rpm         |  24 kB   00:00     
+(177/236): perl-Text-ParseWords-3.29-4.el7.noarch.rpm      |  14 kB   00:00     
+(178/236): perl-libs-5.16.3-294.el7_6.x86_64.rpm           | 688 kB   00:00     
+(179/236): perl-macros-5.16.3-294.el7_6.x86_64.rpm         |  44 kB   00:00     
+(180/236): perl-parent-0.225-244.el7.noarch.rpm            |  12 kB   00:00     
+(181/236): perl-podlators-2.5.1-3.el7.noarch.rpm           | 112 kB   00:00     
+(182/236): perl-threads-1.87-4.el7.x86_64.rpm              |  49 kB   00:00     
+(183/236): perl-threads-shared-1.43-6.el7.x86_64.rpm       |  39 kB   00:00     
+(184/236): php-5.4.16-46.el7.x86_64.rpm                    | 1.4 MB   00:01     
+(185/236): php-gd-5.4.16-46.el7.x86_64.rpm                 | 128 kB   00:00     
+(186/236): php-ldap-5.4.16-46.el7.x86_64.rpm               |  53 kB   00:00     
+(187/236): php-common-5.4.16-46.el7.x86_64.rpm             | 565 kB   00:01     
+(188/236): php-mbstring-5.4.16-46.el7.x86_64.rpm           | 505 kB   00:00     
+(189/236): php-mysql-5.4.16-46.el7.x86_64.rpm              | 101 kB   00:00     
+(190/236): php-pdo-5.4.16-46.el7.x86_64.rpm                |  99 kB   00:00     
+(191/236): php-cli-5.4.16-46.el7.x86_64.rpm                | 2.7 MB   00:02     
+(192/236): php-pear-1.9.4-21.el7.noarch.rpm                | 357 kB   00:00     
+(193/236): php-pecl-memcache-3.0.8-4.el7.x86_64.rpm        |  67 kB   00:00     
+(194/236): nodejs-9.11.2-1nodesource.x86_64.rpm            |  17 MB   00:06     
+(195/236): php-pecl-apcu-4.0.11-1.el7.x86_64.rpm           |  62 kB   00:00     
+(196/236): php-process-5.4.16-46.el7.x86_64.rpm            |  56 kB   00:00     
+(197/236): php-pecl-ssh2-0.12-1.el7.x86_64.rpm             |  34 kB   00:00     
+(198/236): pixman-0.34.0-1.el7.x86_64.rpm                  | 248 kB   00:00     
+(199/236): php-mcrypt-5.4.35-1.x86_64.rpm                  |  17 kB   00:01     
+(200/236): psmisc-22.20-16.el7.x86_64.rpm                  | 141 kB   00:00     
+(201/236): pulseaudio-libs-10.0-5.el7.x86_64.rpm           | 651 kB   00:00     
+(202/236): php-xml-5.4.16-46.el7.x86_64.rpm                | 126 kB   00:00     
+(203/236): redhat-lsb-core-4.1-27.el7.centos.1.x86_64.rpm  |  38 kB   00:00     
+(204/236): python-javapackages-3.4.1-11.el7.noarch.rpm     |  31 kB   00:00     
+(205/236): redhat-lsb-submod-security-4.1-27.el7.centos.1. |  15 kB   00:00     
+(206/236): rsync-3.1.2-6.el7_6.1.x86_64.rpm                | 404 kB   00:00     
+(207/236): sox-14.4.1-7.el7.x86_64.rpm                     | 398 kB   00:00     
+(208/236): speex-1.2-0.19.rc1.el7.x86_64.rpm               |  98 kB   00:00     
+(209/236): python-lxml-3.2.1-4.el7.x86_64.rpm              | 758 kB   00:00     
+(210/236): spax-1.5.2-13.el7.x86_64.rpm                    | 260 kB   00:00     
+(211/236): t1lib-5.1.2-14.el7.x86_64.rpm                   | 166 kB   00:00     
+(212/236): time-1.7-45.el7.x86_64.rpm                      |  30 kB   00:00     
+(213/236): ttmkfdir-3.0.9-42.el7.x86_64.rpm                |  48 kB   00:00     
+(214/236): trousers-0.3.14-2.el7.x86_64.rpm                | 289 kB   00:00     
+(215/236): unzip-6.0-20.el7.x86_64.rpm                     | 170 kB   00:00     
+(216/236): tzdata-java-2019c-1.el7.noarch.rpm              | 187 kB   00:00     
+(217/236): urw-base35-c059-fonts-20170801-10.el7.noarch.rp | 879 kB   00:00     
+(218/236): urw-base35-d050000l-fonts-20170801-10.el7.noarc |  75 kB   00:00     
+(219/236): urw-base35-fonts-20170801-10.el7.noarch.rpm     | 7.6 kB   00:00     
+(220/236): urw-base35-bookman-fonts-20170801-10.el7.noarch | 852 kB   00:00     
+(221/236): urw-base35-fonts-common-20170801-10.el7.noarch. |  19 kB   00:00     
+(222/236): urw-base35-gothic-fonts-20170801-10.el7.noarch. | 650 kB   00:00     
+(223/236): urw-base35-nimbus-sans-fonts-20170801-10.el7.no | 1.3 MB   00:00     
+(224/236): schroedinger-1.0.11-4.el7.x86_64.rpm            | 290 kB   00:01     
+(225/236): urw-base35-nimbus-mono-ps-fonts-20170801-10.el7 | 796 kB   00:00     
+(226/236): urw-base35-standard-symbols-ps-fonts-20170801-1 |  40 kB   00:00     
+(227/236): urw-base35-p052-fonts-20170801-10.el7.noarch.rp | 978 kB   00:00     
+(228/236): wavpack-4.60.1-9.el7.x86_64.rpm                 | 131 kB   00:00     
+(229/236): wget-1.14-18.el7_6.1.x86_64.rpm                 | 547 kB   00:00     
+(230/236): xorg-x11-font-utils-7.5-21.el7.x86_64.rpm       | 104 kB   00:00     
+(231/236): xorg-x11-fonts-Type1-7.5-9.el7.noarch.rpm       | 521 kB   00:00     
+(232/236): xorg-x11-server-utils-7.7-20.el7.x86_64.rpm     | 178 kB   00:00     
+(233/236): urw-base35-nimbus-roman-fonts-20170801-10.el7.n | 860 kB   00:01     
+(234/236): urw-base35-z003-fonts-20170801-10.el7.noarch.rp | 275 kB   00:01     
+(235/236): x265-libs-2.6-1.x86_64.rpm                      | 1.6 MB   00:02     
+(236/236): mesa-libGL-18.3.4-5.el7.x86_64.rpm              | 165 kB   00:15     
+--------------------------------------------------------------------------------
+合計                                               5.9 MB/s | 860 MB  02:26   
